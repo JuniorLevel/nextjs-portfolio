@@ -1,0 +1,12 @@
+@use 'scss-reset/reset';
+@use './themes/variables';
+
+body[app-theme='light'] {
+  background-color: variables.$main-light-bg-primary;
+  color: variables.$main-light-text-primary;
+}
+
+body[app-theme='dark'] {
+  background-color: variables.$main-dark-bg-primary;
+  color: variables.$main-dark-text-primary;
+}

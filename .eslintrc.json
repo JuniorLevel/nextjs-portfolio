@@ -1,0 +1,29 @@
+{
+  "extends": [
+    "next",
+    "eslint:recommended",
+    "next/core-web-vitals",
+    "next/typescript",
+    "prettier"
+  ],
+  "rules": {
+    "react/no-unescaped-entities": 0,
+    "@next/next/no-page-custom-font": 0,
+    "prefer-const": 2,
+    "react/jsx-uses-react": 2,
+    "react/jsx-uses-vars": 2,
+    "eslint-import/no-extraneous-dependencies": 0,
+    "react/jsx-filename-extension": 0,
+    "react-hooks/rules-of-hooks": 2,
+    "react-hooks/exhaustive-deps": 1,
+    "react/function-component-definition": 0,
+    "consistent-return": 0,
+    "@typescript-eslint/no-explicit-any": 0,
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": ["@mui/*/*/*"]
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+.wrapper {
+  height: 100vh;
+  display: flex;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  header {
+    height: 50px;
+  }
+  main {
+    flex-grow: 1;
+  }
+  footer {
+    height: 20px;
+  }
+}
+
+.content {
+  overflow: auto;
+  background-color: gray;
+}
