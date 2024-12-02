@@ -1,0 +1,15 @@
+@use '../../../app/themes/variables.scss';
+
+.navigation {
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: variables.$gap-md;
+  }
+  li {
+    border-radius: variables.$border-radius-base;
+    &.active {
+      background-color: variables.$dark-link-bg-active;
+    }
+  }
+}

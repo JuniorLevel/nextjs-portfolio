@@ -1,0 +1,7 @@
+@use '../../app/themes/variables.scss';
+
+.footer {
+  height: 60px;
+  padding: variables.$padding-md;
+  border-top: 1px solid variables.$border-color-primary;
+}

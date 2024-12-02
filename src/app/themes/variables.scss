@@ -1,5 +1,30 @@
-$main-light-bg-primary: #ffffff;
-$main-light-text-primary: #2d2d2d;
-$main-dark-bg-primary: #261e35;
-$main-dark-text-primary: #ffffff;
-$main-dark-text-secondary: #cdc3e6;
+$font-size-sm: 8px;
+$font-size-md: 16px;
+$font-size-lg: 32px;
+$font-size-xl: 64px;
+$margin-sm: 8px;
+$margin-md: 16px;
+$margin-lg: 32px;
+$margin-xl: 64px;
+$margin-2xl: 128px;
+$padding-sm: 8px;
+$padding-md: 16px;
+$padding-xl: 32px;
+$border-radius-base: 16px;
+$border-color-primary: #464053;
+$gap-sm: 8px;
+$gap-md: 16px;
+$gap-xl: 32px;
+
+// light theme variables
+$light-bg-primary: #ffffff;
+$light-text-primary: #2d2d2d;
+$light-link-bg-active: #a01494d1;
+$light-link-color-icon: #d8bcff;
+
+// dark theme variables
+$dark-bg-primary: #261e35;
+$dark-text-primary: #ffffff;
+$dark-text-secondary: #cdc3e6;
+$dark-link-bg-active: #372c44;
+$dark-link-color-icon: #d8bcff;

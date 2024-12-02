@@ -1,12 +1,16 @@
-@use 'scss-reset/reset';
-@use './themes/variables';
+@use 'scss-reset/reset.scss';
+@use './themes/variables.scss';
+
+body {
+  font-size: variables.$font-size-md;
+}
 
 body[app-theme='light'] {
-  background-color: variables.$main-light-bg-primary;
-  color: variables.$main-light-text-primary;
+  background-color: variables.$light-bg-primary;
+  color: variables.$light-text-primary;
 }
 
 body[app-theme='dark'] {
-  background-color: variables.$main-dark-bg-primary;
-  color: variables.$main-dark-text-primary;
+  background-color: variables.$dark-bg-primary;
+  color: variables.$dark-text-primary;
 }

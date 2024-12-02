@@ -1,19 +1,21 @@
 import { ReactNode } from 'react';
 import styles from './layout.module.scss';
 import Sidebar from '@/src/ui/Sidebar/Sidebar';
+import Footer from '@/src/ui/Footer/Footer';
+import Header from '@/src/ui/Header/Header';
 
-interface IMainLayoutProps {
+type Props = {
   children: ReactNode;
-}
+};
 
-export default function MainLayout({ children }: Readonly<IMainLayoutProps>) {
+export default function layout({ children }: Readonly<Props>) {
   return (
     <div className={styles.wrapper}>
       <Sidebar />
       <div className={styles.container}>
-        <header>Header</header>
+        <Header />
         <main className={styles.content}>{children}</main>
-        <footer>Footer</footer>
+        <Footer />
       </div>
     </div>
   );
