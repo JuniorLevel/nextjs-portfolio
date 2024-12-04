@@ -1,0 +1,6 @@
+@use '../../themes/variables.scss';
+
+.sidebar {
+  padding: variables.$padding-xl variables.$padding-md;
+  border-right: 1px solid variables.$border-color-primary;
+}

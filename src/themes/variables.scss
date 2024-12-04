@@ -10,11 +10,13 @@ $margin-2xl: 128px;
 $padding-sm: 8px;
 $padding-md: 16px;
 $padding-xl: 32px;
+$border-radius-sm: 4px;
 $border-radius-base: 16px;
-$border-color-primary: #464053;
+$border-color-primary: #595169;
 $gap-sm: 8px;
 $gap-md: 16px;
 $gap-xl: 32px;
+$bg-angle: 0deg;
 
 // light theme variables
 $light-bg-primary: #ffffff;
@@ -28,3 +30,6 @@ $dark-text-primary: #ffffff;
 $dark-text-secondary: #cdc3e6;
 $dark-link-bg-active: #372c44;
 $dark-link-color-icon: #d8bcff;
+$dark-avatar-bg-primary: #3f3655;
+$dark-btn-color-primary: #d8bcff;
+$dark-input-color-primary: #d8bcff;

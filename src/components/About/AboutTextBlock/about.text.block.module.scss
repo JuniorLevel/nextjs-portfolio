@@ -1,0 +1,8 @@
+@use '../../../themes/variables.scss';
+
+.textBlock {
+  border: 1px solid variables.$border-color-primary;
+  border-radius: variables.$border-radius-base;
+  flex: 0 1 50%;
+  padding: variables.$padding-md;
+}

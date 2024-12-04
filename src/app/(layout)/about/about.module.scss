@@ -1,0 +1,14 @@
+@use '../../../themes/variables.scss';
+
+.layout {
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  gap: variables.$gap-xl;
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: 100%;
+  width: 100%;
+}

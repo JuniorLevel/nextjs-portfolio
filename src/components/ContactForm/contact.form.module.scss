@@ -1,0 +1,31 @@
+@use '../../themes/variables.scss';
+
+.container {
+  border: 1px solid variables.$border-color-primary;
+  border-radius: variables.$border-radius-base;
+  padding: variables.$padding-xl;
+  h1 {
+    text-align: center;
+    font-size: variables.$font-size-lg;
+    margin-bottom: variables.$margin-md;
+  }
+  .form {
+    display: flex;
+    flex-direction: column;
+    min-width: 320px;
+    width: 100%;
+    gap: variables.$gap-xl;
+    .textArea {
+      background-color: transparent;
+      color: variables.$dark-input-color-primary;
+      border: 1px solid variables.$border-color-primary;
+      border-radius: variables.$border-radius-sm;
+      padding: variables.$padding-md;
+    }
+    .button {
+      color: variables.$dark-btn-color-primary;
+      border: 1px solid variables.$border-color-primary;
+      border-radius: variables.$border-radius-sm;
+    }
+  }
+}

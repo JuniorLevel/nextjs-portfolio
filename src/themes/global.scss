@@ -1,5 +1,5 @@
 @use 'scss-reset/reset.scss';
-@use './themes/variables.scss';
+@use '../themes/variables.scss';
 
 body {
   font-size: variables.$font-size-md;

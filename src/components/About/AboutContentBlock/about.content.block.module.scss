@@ -1,0 +1,9 @@
+@use '../../../themes/variables.scss';
+
+.contentBlock {
+  display: flex;
+  flex-direction: column;
+  gap: variables.$gap-xl;
+  flex: 0 1 50%;
+  overflow: auto;
+}

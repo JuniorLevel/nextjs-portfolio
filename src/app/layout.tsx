@@ -1,14 +1,14 @@
 import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
-import './global.scss';
-import ThemeProvider from './themes/context/ThemeProvider/ThemeProvider';
+import '../themes/global.scss';
+import ThemeProvider from '../context/ThemeProvider/ThemeProvider';
 
 const roboto = Roboto({ subsets: ['latin'], weight: ['400'] });
 
 export const metadata: Metadata = {
-  title: 'Finance & Portfolio app',
+  title: 'Crypto & Portfolio app',
   description:
-    'Финансовое приложение для отслеживание затрат на определённые категории',
+    'Крипто-приложение для отслеживания текущего курса цифровых валют',
 };
 
 export default function RootLayout({

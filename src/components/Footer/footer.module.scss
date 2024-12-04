@@ -1,0 +1,6 @@
+@use '../../themes/variables.scss';
+
+.footer {
+  color: variables.$border-color-primary;
+  text-align: center;
+}
