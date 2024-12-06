@@ -1,6 +1,16 @@
 @use 'scss-reset/reset.scss';
 @use '../themes/variables.scss';
 
+:root {
+  --bg-angle: 0deg;
+}
+
+@property --bg-angle {
+  inherits: false;
+  initial-value: 0deg;
+  syntax: '<angle>';
+}
+
 body {
   font-size: variables.$font-size-md;
 }

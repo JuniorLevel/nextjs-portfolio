@@ -1,8 +1,50 @@
 @use '../../../themes/variables.scss';
+@use '../../../themes/mixins.scss';
 
 .textBlock {
+  flex: 0 1 50%;
+  line-height: 30px;
   border: 1px solid variables.$border-color-primary;
   border-radius: variables.$border-radius-base;
-  flex: 0 1 50%;
   padding: variables.$padding-md;
+  overflow: auto;
+  .textBlockItem {
+    margin-bottom: variables.$margin-xl;
+  }
+  .title {
+    font-size: variables.$font-size-lg;
+    margin-bottom: variables.$margin-xl;
+    text-align: center;
+  }
+  .info {
+    p {
+      text-indent: 25px;
+      span {
+        font-weight: bold;
+      }
+    }
+  }
+  li {
+    position: relative;
+    text-indent: 25px;
+    &::before {
+      content: '✅';
+      position: absolute;
+      top: 0;
+      left: -25px;
+    }
+  }
+  .link {
+    color: variables.$dark-btn-color-primary;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+      animation: 0.13s ease-in-out;
+    }
+  }
+  @include mixins.borderGradient(
+    variables.$dark-bg-primary,
+    variables.$dark-link-bg-active,
+    false
+  );
 }

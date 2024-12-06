@@ -3,13 +3,14 @@
 .wrapper {
   height: 100vh;
   display: flex;
-  & .container {
+  .container {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    padding: variables.$padding-xl;
+    padding: variables.$padding-xl variables.$padding-xl variables.$padding-md
+      variables.$padding-xl;
 
-    & .content {
+    .content {
       flex-grow: 1;
       padding: variables.$padding-xl 0;
       overflow: auto;

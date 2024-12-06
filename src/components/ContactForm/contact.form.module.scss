@@ -1,10 +1,16 @@
 @use '../../themes/variables.scss';
+@use '../../themes/mixins.scss';
 
 .container {
   border: 1px solid variables.$border-color-primary;
   border-radius: variables.$border-radius-base;
   padding: variables.$padding-xl;
-  h1 {
+  @include mixins.borderGradient(
+    variables.$dark-bg-primary,
+    variables.$dark-link-bg-active,
+    true
+  );
+  h2 {
     text-align: center;
     font-size: variables.$font-size-lg;
     margin-bottom: variables.$margin-md;
@@ -21,6 +27,12 @@
       border: 1px solid variables.$border-color-primary;
       border-radius: variables.$border-radius-sm;
       padding: variables.$padding-md;
+    }
+    span {
+      font-size: variables.$font-size-sm;
+      color: variables.$dark-input-color-primary;
+      text-align: center;
+      opacity: 0.3;
     }
     .button {
       color: variables.$dark-btn-color-primary;

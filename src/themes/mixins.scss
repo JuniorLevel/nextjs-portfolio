@@ -1,0 +1,35 @@
+@use '../themes/variables.scss';
+
+@mixin borderGradient($bg-block, $border-color, $playByHover) {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(to bottom, $bg-block, $bg-block) padding-box,
+    conic-gradient(
+        from var(--bg-angle),
+        #d8bcff,
+        #cdc3e6 30%,
+        $border-color 40%,
+        #372c44 50%,
+        #d8bcff
+      )
+      border-box;
+  animation: spin 12s infinite linear;
+  @if ($playByHover == true) {
+    animation-play-state: paused;
+  } @else {
+    animation-play-state: running;
+  }
+
+  &:hover {
+    @if ($playByHover == true) {
+      animation-play-state: running;
+    } @else {
+      animation-play-state: paused;
+    }
+  }
+  @keyframes spin {
+    to {
+      --bg-angle: 360deg;
+    }
+  }
+}

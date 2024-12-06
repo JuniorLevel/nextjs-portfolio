@@ -1,0 +1,33 @@
+@use '../../../../themes/variables.scss';
+@use '../../../../themes/mixins.scss';
+
+.stackBlock {
+  border: 1px solid variables.$border-color-primary;
+  border-radius: variables.$border-radius-base;
+  padding: variables.$padding-md;
+  height: calc(variables.$layout-size / 2.5);
+  overflow: auto;
+  h3 {
+    font-size: variables.$font-size-lg;
+    text-align: center;
+    margin-bottom: variables.$margin-lg;
+  }
+  @include mixins.borderGradient(
+    variables.$dark-bg-primary,
+    variables.$dark-link-bg-active,
+    false
+  );
+  .stack {
+    span {
+      color: variables.$dark-text-secondary;
+    }
+    p {
+      font-weight: bold;
+    }
+    li {
+      display: flex;
+      gap: variables.$gap-sm;
+      margin-bottom: variables.$margin-md;
+    }
+  }
+}

@@ -17,8 +17,9 @@ interface IThemeContextProps {
   setUserTheme: (userTheme: string) => void;
 }
 
-const defaultTheme = 'light';
-const bodyAttribute = 'app-theme';
+export const defaultTheme = 'light';
+export const darkTheme = 'dark';
+export const bodyAttribute = 'app-theme';
 
 export const ThemeContext = createContext<IThemeContextProps>({
   userTheme: defaultTheme,
@@ -28,18 +29,19 @@ export const ThemeContext = createContext<IThemeContextProps>({
 export default function ThemeProvider({
   children,
 }: Readonly<IThemeProviderProps>) {
-  const [userTheme, setUserTheme] = useState(defaultTheme);
+  const [userTheme, setUserTheme] = useState(
+    localStorage.getItem(bodyAttribute) ?? defaultTheme
+  );
 
   useEffect(() => {
     if (!localStorage.getItem(bodyAttribute)) {
       const currentUserBrowserTheme = window.matchMedia(
         `(prefers-color-scheme: light)`
       ).matches
-        ? 'light'
-        : 'dark';
+        ? defaultTheme
+        : darkTheme;
       document.body.setAttribute(bodyAttribute, currentUserBrowserTheme);
       localStorage.setItem(bodyAttribute, currentUserBrowserTheme);
-      console.log(document.body.getAttribute(bodyAttribute));
     } else {
       document.body.setAttribute(
         bodyAttribute,
@@ -47,6 +49,11 @@ export default function ThemeProvider({
       );
     }
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem(bodyAttribute, userTheme);
+    document.body.setAttribute(bodyAttribute, userTheme);
+  }, [userTheme, setUserTheme]);
 
   const value = useMemo<IThemeContextProps>(
     () => ({

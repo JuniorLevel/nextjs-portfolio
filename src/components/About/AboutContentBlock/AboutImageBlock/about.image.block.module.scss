@@ -1,4 +1,5 @@
 @use '../../../../themes/variables.scss';
+@use '../../../../themes/mixins.scss';
 
 .imageBlock {
   display: flex;
@@ -7,12 +8,15 @@
   justify-content: center;
   gap: variables.$gap-xl;
   width: 100%;
-  height: 80%;
+  height: calc(variables.$layout-size / 1.5);
   overflow: auto;
-  border: 1px solid variables.$border-color-primary;
   border-radius: variables.$border-radius-base;
   padding: variables.$padding-md;
-
+  @include mixins.borderGradient(
+    variables.$dark-bg-primary,
+    variables.$dark-link-bg-active,
+    false
+  );
   .image {
     max-width: 400px;
     max-height: 400px;

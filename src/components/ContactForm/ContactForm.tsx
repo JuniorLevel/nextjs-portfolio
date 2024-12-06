@@ -9,9 +9,9 @@ type Props = {};
 export default function ContactForm({}: Props) {
   return (
     <div className={styles.container}>
-      <h1>
+      <h2>
         Предложение <br /> о сотрудничестве
-      </h1>
+      </h2>
       <Form action='' className={styles.form}>
         <Input
           type='text'
@@ -22,7 +22,7 @@ export default function ContactForm({}: Props) {
         />
         <Input
           color='primary'
-          placeholder='Введите почту'
+          placeholder='Ваша почта'
           required
           sx={{ color: '#d8bcff', padding: '8px' }}
         />
@@ -31,6 +31,7 @@ export default function ContactForm({}: Props) {
           minRows={3}
           placeholder='Сообщение'
         />
+        <span>Сообщение попадёт на почту сервиса mail.ru</span>
         <Button className={styles.button} variant='outlined'>
           Написать на почту
         </Button>
