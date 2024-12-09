@@ -1,0 +1,29 @@
+@use '../../../../themes/variables.scss';
+
+.icon-dark-styles {
+  svg {
+    color: variables.$dark-link-color-icon;
+    padding: variables.$padding-md;
+    font-size: variables.$font-size-xl;
+  }
+}
+
+.icon-light-styles {
+  svg {
+    color: variables.$light-link-color-icon;
+    padding: variables.$padding-md;
+    font-size: variables.$font-size-xl;
+  }
+}
+
+body[app-theme='dark'] {
+  .link {
+    @extend .icon-dark-styles;
+  }
+}
+
+body[app-theme='light'] {
+  .link {
+    @extend .icon-light-styles;
+  }
+}

@@ -1,0 +1,7 @@
+@use '../../../themes/variables.scss';
+
+.social {
+  display: flex;
+  flex-direction: column;
+  gap: variables.$gap-md;
+}

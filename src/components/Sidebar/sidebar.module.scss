@@ -1,6 +1,12 @@
 @use '../../themes/variables.scss';
 
 .sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
   padding: variables.$padding-xl variables.$padding-md;
   border-right: 1px solid variables.$border-color-primary;
+  overflow-y: auto;
+  overflow-x: hidden;
 }

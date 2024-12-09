@@ -8,7 +8,7 @@ export default function AboutImageBlock({}: Props) {
   return (
     <div className={styles.imageBlock}>
       <div className={styles.image}>
-        <Image src='/profile.png' alt='profile' width={250} height={250} />
+        <Image src='/profile.jpg' alt='profile' width={250} height={250} />
       </div>
       <p>Frontend Developer 🧑‍💻</p>
     </div>

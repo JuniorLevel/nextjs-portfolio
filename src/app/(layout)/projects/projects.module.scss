@@ -1,0 +1,15 @@
+@use '../../../themes/variables.scss';
+
+.layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  min-height: 100%;
+}
+
+.container {
+  display: flex;
+  max-height: 850px;
+  height: 100%;
+}

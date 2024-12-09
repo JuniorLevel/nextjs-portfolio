@@ -7,9 +7,9 @@ type Props = {};
 
 export default function AboutContentBlock({}: Props) {
   return (
-    <div className={styles.contentBlock}>
+    <article className={styles.contentBlock}>
       <AboutImageBlock />
       <AboutSkillsBlock />
-    </div>
+    </article>
   );
 }

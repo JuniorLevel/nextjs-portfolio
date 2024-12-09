@@ -1,13 +1,12 @@
 import React from 'react';
 import styles from './about.text.block.module.scss';
 import Link from 'next/link';
-import { Satisfy } from 'next/font/google';
 
 type Props = {};
 
 export default function AboutTextBlock({}: Props) {
   return (
-    <div className={styles.textBlock}>
+    <article className={styles.textBlock}>
       <div className={styles.textBlockItem}>
         <h3 className={styles.title}>Биография</h3>
         <div className={styles.info}>
@@ -40,8 +39,11 @@ export default function AboutTextBlock({}: Props) {
           <br />
           <p>
             Ищу возможность реализовать полученные знания и опыт разработки на
-            реальных проектах. Если у Вас есть предложение, напишите мне на
-            почту. Готов к сотрудничеству!
+            реальных проектах. Если у Вас есть предложение,{' '}
+            <Link className={styles.link} href='contacts'>
+              напишите мне на почту
+            </Link>
+            . Готов к сотрудничеству!
           </p>
         </div>
       </div>
@@ -49,8 +51,8 @@ export default function AboutTextBlock({}: Props) {
         <h3 className={styles.title}>Коммерческий опыт работы (6 месяцев)</h3>
         <ul>
           <li>
-            Развитие df_boilerplate проекта с использованием UI библиотеки Ant
-            Design. Подробнее на странице{' '}
+            Развитие df_boilerplate проекта на ReactJS с использованием UI
+            библиотеки Ant Design. Подробнее на странице{' '}
             <Link href='/projects' className={styles.link}>
               "Мои проекты"
             </Link>
@@ -58,6 +60,6 @@ export default function AboutTextBlock({}: Props) {
           </li>
         </ul>
       </div>
-    </div>
+    </article>
   );
 }

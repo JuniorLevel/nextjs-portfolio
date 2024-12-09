@@ -18,9 +18,40 @@ body {
 body[app-theme='light'] {
   background-color: variables.$light-bg-primary;
   color: variables.$light-text-primary;
+
+  .swiper-pagination {
+    span {
+      background-color: variables.$dark-link-color-icon;
+    }
+  }
+
+  .swiper-slide-prev,
+  .swiper-slide-next {
+    background-color: grey;
+    background-image: linear-gradient(to right, grey, #0000);
+  }
 }
 
 body[app-theme='dark'] {
   background-color: variables.$dark-bg-primary;
   color: variables.$dark-text-primary;
+
+  .swiper-pagination {
+    span {
+      background-color: variables.$dark-link-color-icon;
+    }
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    &::after {
+      color: variables.$dark-btn-color-primary;
+    }
+  }
+
+  .swiper-slide-prev,
+  .swiper-slide-next {
+    background-color: transparent;
+    background-image: linear-gradient(to right, #644b8e2e, #644b8e2e);
+  }
 }

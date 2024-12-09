@@ -35,7 +35,7 @@ export const stack: IStack[] = [
   {
     id: 7,
     label: 'Базы данных',
-    description: 'PostgreSQL, MongoDB + Mongoose ORM',
+    description: 'PostgreSQL, MongoDB + Mongoose',
   },
   { id: 8, label: 'Тестирование:', description: 'Jest, React Testing Library' },
   { id: 9, label: 'Документирование:', description: 'Styleguidist' },
