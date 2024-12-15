@@ -1,12 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import { appRoutes } from '@/src/config/routes.config';
+import { appRoutes } from '@/config/routes.config';
 import styles from './logo.module.scss';
 
-type Props = {};
-
-export default function Logo({}: Props) {
+export default function Logo() {
   return (
     <div className={styles.logo}>
       <Link href={appRoutes.DASHBOARD}>

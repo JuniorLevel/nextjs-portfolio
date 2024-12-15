@@ -16,7 +16,7 @@
   }
 }
 
-body[app-theme='dark'] {
+body[data-app-theme='dark'] {
   .link {
     border-radius: variables.$border-radius-base;
     @extend .icon-dark-styles;
@@ -27,7 +27,7 @@ body[app-theme='dark'] {
   }
 }
 
-body[app-theme='light'] {
+body[data-app-theme='light'] {
   .link {
     border-radius: variables.$border-radius-base;
     @extend .icon-light-styles;

@@ -11,13 +11,12 @@ import {
   darkTheme,
   defaultTheme,
   ThemeContext,
-} from '@/src/context/ThemeProvider/ThemeProvider';
-
-type Props = {};
+} from '@/context/ThemeProvider/ThemeProvider';
+import { updateCookiesValue } from '@/app/actions';
 
 const oswald = Oswald({ subsets: ['latin'], weight: ['400'] });
 
-export default function Header({}: Props) {
+export default function Header() {
   const pathname = usePathname();
   const info = getCurrentHeaderInfo(pathname);
   const { userTheme, setUserTheme } = useContext(ThemeContext);
@@ -31,7 +30,10 @@ export default function Header({}: Props) {
         {userTheme === defaultTheme && (
           <button
             className={styles.switchBtn}
-            onClick={() => setUserTheme(darkTheme)}
+            onClick={() => {
+              updateCookiesValue(darkTheme);
+              setUserTheme(darkTheme);
+            }}
           >
             <DarkModeIcon />
           </button>
@@ -39,7 +41,10 @@ export default function Header({}: Props) {
         {userTheme === darkTheme && (
           <button
             className={styles.switchBtn}
-            onClick={() => setUserTheme(defaultTheme)}
+            onClick={() => {
+              updateCookiesValue(defaultTheme);
+              setUserTheme(defaultTheme);
+            }}
           >
             <WbSunnyIcon />
           </button>

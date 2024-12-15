@@ -2,9 +2,7 @@ import React from 'react';
 import styles from './about.text.block.module.scss';
 import Link from 'next/link';
 
-type Props = {};
-
-export default function AboutTextBlock({}: Props) {
+export default function AboutTextBlock() {
   return (
     <article className={styles.textBlock}>
       <div className={styles.textBlockItem}>

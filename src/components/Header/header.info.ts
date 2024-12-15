@@ -1,4 +1,4 @@
-import { appRoutes } from '@/src/config/routes.config';
+import { appRoutes } from '@/config/routes.config';
 
 export interface IHeaderInfo {
   id: number;

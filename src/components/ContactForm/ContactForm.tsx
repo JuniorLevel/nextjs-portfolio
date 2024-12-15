@@ -1,41 +1,138 @@
-import React from 'react';
+'use client';
+
+import React, { useRef, useState } from 'react';
 import styles from './contact.form.module.scss';
-import Form from 'next/form';
-import { Button, TextareaAutosize } from '@mui/material';
-import Input from '@mui/material/Input';
+import { Button, Input, TextareaAutosize } from '@mui/material';
+import { ErrorMessage, Field, Formik, FormikHelpers } from 'formik';
+import emailjs from '@emailjs/browser';
+import * as Yup from 'yup';
+import { toast } from 'react-toastify';
 
-type Props = {};
+export default function ContactForm() {
+  const [disabled, setDisabled] = useState(false);
 
-export default function ContactForm({}: Props) {
+  const validationSchema = Yup.object({
+    from_name: Yup.string()
+      .min(4, 'Не менее 4 символов')
+      .max(15, 'Не более 15 символов'),
+    from_email: Yup.string().email('Некорректный адрес электронной почты'),
+    message: Yup.string().max(2000, 'Лимит 2000 символов'),
+  });
+
+  const form = useRef<HTMLFormElement>(null);
+
+  const sendEmail = async (
+    actions: FormikHelpers<{
+      from_name: string;
+      from_email: string;
+      message: string;
+    }>
+  ) => {
+    if (!form.current) {
+      return;
+    }
+
+    await toast.promise(
+      emailjs.sendForm(
+        `${process.env.NEXT_PUBLIC_EMAILJS_SERVICE_KEY}`,
+        `${process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_KEY}`,
+        form.current,
+        {
+          publicKey: `${process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY}`,
+        }
+      ),
+      {
+        pending: {
+          position: 'top-center',
+          className: styles.toast,
+          render() {
+            setDisabled(true);
+            return 'Отправка формы';
+          },
+        },
+        success: {
+          position: 'top-center',
+          className: styles.toast,
+          render() {
+            setDisabled(false);
+            actions.resetForm();
+            return 'Спасибо за обращение! Отвечу в ближайшее время.';
+          },
+        },
+        error: {
+          position: 'top-center',
+          className: styles.toast,
+          render() {
+            setDisabled(false);
+            actions.resetForm();
+            return `Ошибка при отправке сообщения. Свяжитесь со мной, кликнув на иконку '@ - Mail.ru' на боковой панели!`;
+          },
+        },
+      }
+    );
+  };
+
   return (
     <div className={styles.container}>
       <h2>
         Предложение <br /> о сотрудничестве
       </h2>
-      <Form action='' className={styles.form}>
-        <Input
-          type='text'
-          color='primary'
-          placeholder='Как Вас зовут ?'
-          required
-          sx={{ color: '#d8bcff', padding: '8px' }}
-        />
-        <Input
-          color='primary'
-          placeholder='Ваша почта'
-          required
-          sx={{ color: '#d8bcff', padding: '8px' }}
-        />
-        <TextareaAutosize
-          className={styles.textArea}
-          minRows={3}
-          placeholder='Сообщение'
-        />
-        <span>Сообщение попадёт на почту сервиса mail.ru</span>
-        <Button className={styles.button} variant='outlined'>
-          Написать на почту
-        </Button>
-      </Form>
+      <Formik
+        initialValues={{ from_name: '', from_email: '', message: '' }}
+        onSubmit={(values, actions) => {
+          sendEmail(actions);
+        }}
+        validationSchema={validationSchema}
+      >
+        {(formik) => (
+          <form
+            ref={form}
+            onSubmit={formik.handleSubmit}
+            className={styles.form}
+          >
+            <Field
+              name='from_name'
+              as={Input}
+              placeholder='Как Вас зовут ?'
+              required
+              sx={{ color: '#d8bcff', padding: '8px' }}
+            />
+            <div className={styles.error}>
+              <ErrorMessage name='from_name' />
+            </div>
+            <Field
+              name='from_email'
+              as={Input}
+              placeholder='Ваша почта'
+              required
+              sx={{ color: '#d8bcff', padding: '8px' }}
+            />
+            <div className={styles.error}>
+              <ErrorMessage name='from_email' />
+            </div>
+            <Field
+              name='message'
+              className={styles.textArea}
+              minRows={3}
+              as={TextareaAutosize}
+              placeholder='Сообщение'
+              required
+            />
+            <div className={styles.error}>
+              <ErrorMessage name='message' />
+            </div>
+            <span>Сообщение попадёт на почту сервиса mail.ru</span>
+            <Button
+              type='submit'
+              disabled={disabled}
+              className={styles.button}
+              variant='outlined'
+            >
+              Написать на почту
+            </Button>
+          </form>
+        )}
+      </Formik>
     </div>
   );
 }

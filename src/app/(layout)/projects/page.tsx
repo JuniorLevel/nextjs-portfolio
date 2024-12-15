@@ -1,4 +1,4 @@
-import ProjectsSlider from '@/src/components/Projects/ProjectsSlider/ProjectsSlider';
+import ProjectsSlider from '@/components/Projects/ProjectsSlider/ProjectsSlider';
 import React from 'react';
 import style from './projects.module.scss';
 

@@ -13,26 +13,30 @@
     "format": "prettier --write \"**/*.{ts,tsx,json}\""
   },
   "dependencies": {
-    "@emotion/react": "^11.13.5",
-    "@emotion/styled": "^11.13.5",
-    "@mui/icons-material": "^6.1.10",
-    "@mui/material": "^6.1.10",
-    "next": "15.0.4",
+    "@emailjs/browser": "^4.4.1",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/icons-material": "^6.2.0",
+    "@mui/material": "^6.2.0",
+    "formik": "^2.4.6",
+    "next": "15.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "swiper": "^11.1.15"
+    "react-toastify": "^10.0.6",
+    "swiper": "^11.1.15",
+    "yup": "^1.5.0"
   },
   "devDependencies": {
-    "@next/eslint-plugin-next": "^15.0.4",
-    "@types/node": "^22.10.1",
+    "@next/eslint-plugin-next": "^15.1.0",
+    "@types/node": "^22.10.2",
     "@types/react": "^19.0.1",
-    "@types/react-dom": "^19.0.1",
+    "@types/react-dom": "^19.0.2",
     "eslint": "^8.57.1",
-    "eslint-config-next": "15.0.4",
+    "eslint-config-next": "15.1.0",
     "eslint-config-prettier": "^9.1.0",
     "prettier": "^3.4.2",
     "react-icons": "^5.4.0",
-    "sass": "^1.82.0",
+    "sass": "^1.83.0",
     "scss-reset": "^1.4.2",
     "typescript": "^5.7.2"
   }

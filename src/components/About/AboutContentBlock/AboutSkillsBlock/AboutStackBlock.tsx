@@ -2,9 +2,7 @@ import React from 'react';
 import styles from './about.stack.block.module.scss';
 import { stack } from './stack';
 
-type Props = {};
-
-export default function AboutStackBlock({}: Props) {
+export default function AboutStackBlock() {
   return (
     <div className={styles.stackBlock}>
       <h3>Используемый стек технологий</h3>

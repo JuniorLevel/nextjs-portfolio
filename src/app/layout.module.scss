@@ -1,15 +1,37 @@
 @use '../themes/variables.scss';
 
-.layout {
+.notFound {
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  width: 100%;
-  background-image: url('/welcome-bg.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.container {
+  .notFound404 {
+    text-align: center;
+    h1 {
+      font-size: 10em;
+      font-weight: bold;
+      line-height: 120px;
+    }
+    p {
+      font-size: 5em;
+      margin-bottom: variables.$margin-md;
+    }
+    .btn {
+      display: block;
+      margin: 0 auto;
+      border: 1px solid variables.$border-color-primary;
+      border-radius: variables.$border-radius-sm;
+      max-width: 150px;
+      color: variables.$dark-btn-color-primary;
+      width: 100%;
+      padding: variables.$padding-sm;
+      text-decoration: none;
+      &:hover {
+        background-color: rgba(
+          $color: variables.$dark-btn-color-primary,
+          $alpha: 0.1
+        );
+      }
+    }
+  }
 }

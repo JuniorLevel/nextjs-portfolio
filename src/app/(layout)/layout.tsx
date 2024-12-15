@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
 import styles from './layout.module.scss';
-import Sidebar from '@/src/components/Sidebar/Sidebar';
-import Footer from '@/src/components/Footer/Footer';
-import Header from '@/src/components/Header/Header';
+import Sidebar from '@/components/Sidebar/Sidebar';
+import Footer from '@/components/Footer/Footer';
+import Header from '@/components/Header/Header';
 
 type Props = {
   children: ReactNode;

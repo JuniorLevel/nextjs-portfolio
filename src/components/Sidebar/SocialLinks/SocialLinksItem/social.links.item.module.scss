@@ -16,13 +16,13 @@
   }
 }
 
-body[app-theme='dark'] {
+body[data-app-theme='dark'] {
   .link {
     @extend .icon-dark-styles;
   }
 }
 
-body[app-theme='light'] {
+body[data-app-theme='light'] {
   .link {
     @extend .icon-light-styles;
   }

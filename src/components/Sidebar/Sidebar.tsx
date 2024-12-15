@@ -6,9 +6,7 @@ import Logo from '../Logo/Logo';
 import SocialLinks from './SocialLinks/SocialLinks';
 import { socialLinks } from './SocialLinks/social.links';
 
-type Props = {};
-
-export default function Sidebar({}: Props) {
+export default function Sidebar() {
   return (
     <div className={styles.sidebar}>
       <Logo />

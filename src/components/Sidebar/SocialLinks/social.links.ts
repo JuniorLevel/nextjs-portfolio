@@ -14,7 +14,7 @@ export const socialLinks: ISocialLinksItem[] = [
   {
     id: 0,
     title: 'Mail.ru',
-    href: 'https://e.mail.ru/compose/?To=work.junior@mail.ru',
+    href: 'mailto:work.junior@mail.ru',
     icon: MdAlternateEmail,
   },
   {

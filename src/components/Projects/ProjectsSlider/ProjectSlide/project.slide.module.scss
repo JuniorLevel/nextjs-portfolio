@@ -2,6 +2,7 @@
 @use '../../../../themes/mixins.scss';
 
 .slide {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -16,7 +17,6 @@
   border: 1px solid variables.$border-color-primary;
   border-radius: variables.$border-radius-base;
   padding: variables.$padding-md;
-  overflow: auto;
   @include mixins.borderGradient(
     variables.$dark-bg-primary,
     variables.$dark-link-bg-active,
@@ -37,13 +37,13 @@
     border-radius: variables.$border-radius-base;
     img {
       border-radius: variables.$border-radius-base;
-      max-width: 100%;
-      max-height: 100%;
+      width: auto;
+      height: auto;
       object-fit: cover;
     }
   }
   .description {
-    text-indent: 25px;
+    text-indent: variables.$text-indent;
     margin-bottom: variables.$margin-lg;
   }
   .buttons {
@@ -53,7 +53,7 @@
     align-items: center;
     margin-top: variables.$margin-sm;
     text-align: center;
-    .button {
+    .btn {
       border: 1px solid variables.$border-color-primary;
       border-radius: variables.$border-radius-sm;
       max-width: 300px;
@@ -62,6 +62,15 @@
         background-color: transparent;
         color: variables.$dark-btn-color-primary;
         text-decoration: none;
+      }
+    }
+    .icon {
+      svg {
+        font-size: variables.$font-size-xl;
+        color: variables.$dark-link-color-icon;
+        &:hover {
+          color: rgba($color: variables.$dark-link-color-icon, $alpha: 0.5);
+        }
       }
     }
     z-index: 10;
@@ -83,7 +92,6 @@
       border-radius: variables.$border-radius-sm;
     }
   }
-  position: relative;
   & .glow {
     position: absolute;
     width: 100%;

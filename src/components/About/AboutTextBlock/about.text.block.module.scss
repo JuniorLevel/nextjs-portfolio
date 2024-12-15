@@ -18,7 +18,7 @@
   }
   .info {
     p {
-      text-indent: 25px;
+      text-indent: variables.$text-indent;
       span {
         font-weight: bold;
       }

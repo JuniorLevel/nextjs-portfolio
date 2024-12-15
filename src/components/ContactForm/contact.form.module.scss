@@ -27,6 +27,11 @@
       border: 1px solid variables.$border-color-primary;
       border-radius: variables.$border-radius-sm;
       padding: variables.$padding-md;
+      min-height: 20px;
+      &::placeholder {
+        color: variables.$dark-input-color-primary;
+        opacity: 0.5;
+      }
     }
     span {
       font-size: variables.$font-size-sm;
@@ -39,5 +44,25 @@
       border: 1px solid variables.$border-color-primary;
       border-radius: variables.$border-radius-sm;
     }
+  }
+  .error {
+    color: red;
+    font-size: variables.$font-size-sm;
+    margin-top: -15px;
+  }
+}
+
+body[data-app-theme='dark'] {
+  .toast {
+    width: 400px;
+    background-color: variables.$border-color-primary;
+    color: variables.$dark-text-secondary;
+  }
+}
+
+body[data-app-theme='light'] {
+  .toast {
+    width: 400px;
+    background-color: variables.$light-bg-primary;
   }
 }

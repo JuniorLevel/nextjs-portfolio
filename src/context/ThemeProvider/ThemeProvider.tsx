@@ -1,8 +1,10 @@
 'use client';
 
+import { getCookiesValue, updateCookiesValue } from '@/app/actions';
 import React, {
   createContext,
   ReactNode,
+  useCallback,
   useEffect,
   useMemo,
   useState,
@@ -19,7 +21,7 @@ interface IThemeContextProps {
 
 export const defaultTheme = 'light';
 export const darkTheme = 'dark';
-export const bodyAttribute = 'app-theme';
+export const bodyAttribute = 'data-app-theme';
 
 export const ThemeContext = createContext<IThemeContextProps>({
   userTheme: defaultTheme,
@@ -29,29 +31,18 @@ export const ThemeContext = createContext<IThemeContextProps>({
 export default function ThemeProvider({
   children,
 }: Readonly<IThemeProviderProps>) {
-  const [userTheme, setUserTheme] = useState(
-    localStorage.getItem(bodyAttribute) ?? defaultTheme
-  );
+  const [userTheme, setUserTheme] = useState(defaultTheme);
 
-  useEffect(() => {
-    if (!localStorage.getItem(bodyAttribute)) {
-      const currentUserBrowserTheme = window.matchMedia(
-        `(prefers-color-scheme: light)`
-      ).matches
-        ? defaultTheme
-        : darkTheme;
-      document.body.setAttribute(bodyAttribute, currentUserBrowserTheme);
-      localStorage.setItem(bodyAttribute, currentUserBrowserTheme);
-    } else {
-      document.body.setAttribute(
-        bodyAttribute,
-        String(localStorage.getItem(bodyAttribute))
-      );
-    }
+  const handleSetUserTheme = useCallback((theme: string) => {
+    setUserTheme(String(document.body.getAttribute(bodyAttribute)));
+    document.body.setAttribute(bodyAttribute, theme);
   }, []);
 
   useEffect(() => {
-    localStorage.setItem(bodyAttribute, userTheme);
+    handleSetUserTheme(userTheme);
+  }, [handleSetUserTheme]);
+
+  useEffect(() => {
     document.body.setAttribute(bodyAttribute, userTheme);
   }, [userTheme, setUserTheme]);
 

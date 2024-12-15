@@ -3,8 +3,8 @@ import styles from './project.slide.module.scss';
 import Image from 'next/image';
 import { IProjectData } from './projects.data';
 import { Button } from '@mui/material';
-import { useSlideHover } from '@/hooks/useSlideHover';
 import { FaGithub } from 'react-icons/fa';
+import { useSlideHover } from '@/hooks/useSlideHover';
 
 type Props = { project: IProjectData };
 
@@ -17,21 +17,21 @@ function ProjectSlide({ project }: Readonly<Props>) {
       <div className={styles.image}>
         <Image
           src={project.img}
-          alt={project.title ?? 'picture'}
-          width={400}
-          height={400}
+          alt={`project-${project.id}-img`}
+          width={300}
+          height={300}
           priority
         />
       </div>
       <div className={styles.buttons}>
-        <Button className={styles.button} variant='outlined'>
+        <Button className={styles.btn} variant='outlined'>
           <a href={project.url} target='_blank'>
             Перейти на сайт
           </a>
         </Button>
-        <div>
+        <div className={styles.icon}>
           <a href={project.repositoryUrl} target='_blank'>
-            <FaGithub size={50} color='aqua' />
+            <FaGithub />
           </a>
         </div>
       </div>

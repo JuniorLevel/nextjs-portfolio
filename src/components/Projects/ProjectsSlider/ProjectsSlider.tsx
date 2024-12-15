@@ -9,9 +9,7 @@ import 'swiper/scss';
 import 'swiper/scss/effect-coverflow';
 import 'swiper/scss/navigation';
 
-type Props = {};
-
-function ProjectsSlider({}: Props) {
+function ProjectsSlider() {
   return (
     <Swiper
       effect={'coverflow'}

@@ -1,9 +1,7 @@
 import React, { useMemo } from 'react';
 import styles from './footer.module.scss';
 
-type Props = {};
-
-export default function Footer({}: Props) {
+export default function Footer() {
   const currentYear = useMemo(() => {
     const date = new Date();
     return date.getFullYear();

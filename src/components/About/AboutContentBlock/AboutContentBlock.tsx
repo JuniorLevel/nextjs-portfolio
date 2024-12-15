@@ -3,9 +3,7 @@ import styles from './about.content.block.module.scss';
 import AboutSkillsBlock from './AboutSkillsBlock/AboutStackBlock';
 import AboutImageBlock from './AboutImageBlock/AboutImageBlock';
 
-type Props = {};
-
-export default function AboutContentBlock({}: Props) {
+export default function AboutContentBlock() {
   return (
     <article className={styles.contentBlock}>
       <AboutImageBlock />
