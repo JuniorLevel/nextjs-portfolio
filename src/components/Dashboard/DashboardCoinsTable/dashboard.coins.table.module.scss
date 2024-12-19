@@ -1,0 +1,40 @@
+@use '../../../themes/variables.scss';
+
+.coinsTable {
+  h2 {
+    font-weight: bold;
+    font-size: variables.$font-size-dashboard-item-title;
+  }
+  table {
+    width: 100%;
+    thead th {
+      color: #7c7f89;
+      font-weight: bold;
+      padding-bottom: 5px;
+      &:first-child {
+        text-align: start;
+      }
+    }
+    tbody {
+      tr {
+        &:last-child {
+          td {
+            padding: 0;
+          }
+        }
+      }
+      td {
+        .name {
+          font-weight: bold;
+          margin-left: variables.$margin-md;
+          color: #7c7f89;
+        }
+      }
+    }
+    td {
+      &:not(:first-child) {
+        text-align: center;
+      }
+    }
+  }
+}

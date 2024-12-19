@@ -1,0 +1,45 @@
+@use '../../../../themes/variables.scss';
+
+.coin {
+  position: relative;
+  padding: variables.$padding-md;
+  background-color: variables.$dark-dashboard-block-bg;
+  border: 3px solid variables.$border-color-primary;
+  border-radius: variables.$border-radius-base;
+  height: 250px;
+  .coinIcon {
+    position: absolute;
+    top: -30px;
+    left: 200px;
+  }
+  .coinData {
+    margin-top: variables.$margin-lg;
+    .panel {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: variables.$margin-sm;
+      .ratio {
+        display: flex;
+        align-items: center;
+        gap: variables.$gap-sm;
+        span {
+          color: #7c7f89;
+        }
+      }
+      .dynamic {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        .percentUp {
+          color: #17ffc1;
+        }
+        .percentDown {
+          color: red;
+        }
+      }
+    }
+  }
+  .chart {
+    margin-top: 10px;
+  }
+}

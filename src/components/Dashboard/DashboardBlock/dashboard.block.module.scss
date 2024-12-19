@@ -1,0 +1,10 @@
+@use '../../../themes/variables.scss';
+
+.block {
+  background-color: variables.$dark-dashboard-block-bg;
+  border: 3px solid variables.$border-color-primary;
+  border-radius: variables.$border-radius-base;
+  padding: variables.$padding-md;
+  height: 290px;
+  overflow: auto;
+}

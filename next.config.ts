@@ -18,6 +18,14 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'static.coinstats.app',
+      },
+    ],
+  },
 };
 
 export default nextConfig;

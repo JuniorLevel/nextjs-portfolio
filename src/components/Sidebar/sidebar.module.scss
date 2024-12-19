@@ -5,8 +5,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  gap: variables.$gap-xl;
   padding: variables.$padding-xl variables.$padding-md;
   border-right: 1px solid variables.$border-color-primary;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: auto;
+  max-width: 97px;
+  width: 100%;
 }

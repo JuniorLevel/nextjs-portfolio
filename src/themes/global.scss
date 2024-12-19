@@ -13,6 +13,9 @@
 
 body {
   font-size: variables.$font-size-md;
+  .swiper-slide {
+    border-radius: variables.$border-radius-base;
+  }
 }
 
 body[data-app-theme='light'] {
