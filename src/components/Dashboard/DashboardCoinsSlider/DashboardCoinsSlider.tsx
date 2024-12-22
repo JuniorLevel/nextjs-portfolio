@@ -7,14 +7,15 @@ import 'swiper/scss';
 import 'swiper/scss/navigation';
 import dynamic from 'next/dynamic';
 import { useResponsiveSwiperContainer } from '@/hooks/useResponsiveSwiperContainer';
-
-type Props = {};
+import { coins } from '@/api/fake.data';
 
 const DashboardCoin = dynamic(() => import('./DashboardCoin/DashboardCoin'), {
   ssr: false,
 });
 
-function DashboardCoinsSlider({}: Props) {
+const { result } = coins;
+
+function DashboardCoinsSlider() {
   const { windowWidth } = useResponsiveSwiperContainer();
 
   return (
@@ -29,13 +30,13 @@ function DashboardCoinsSlider({}: Props) {
       spaceBetween={16}
       autoplay={{
         delay: 1500,
-        disableOnInteraction: false,
+        disableOnInteraction: true,
       }}
       modules={[Autoplay, Navigation]}
     >
-      {[0, 1, 2, 3, 4, 5].map((item) => (
-        <SwiperSlide key={item} style={{ maxWidth: '455px' }}>
-          <DashboardCoin />
+      {result.map((coin, idx) => (
+        <SwiperSlide key={coin.name} style={{ maxWidth: '455px' }}>
+          <DashboardCoin coin={coin} coinIndex={idx} />
         </SwiperSlide>
       ))}
     </Swiper>

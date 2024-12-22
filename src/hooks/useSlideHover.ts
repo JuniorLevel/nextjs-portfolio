@@ -4,7 +4,7 @@ export const useSlideHover = () => {
   const slideDivRef = useRef<HTMLDivElement>(null);
   const glowDivRef = useRef<HTMLDivElement>(null);
 
-  const rotateToMouse = (e: MouseEvent) => {
+  const rotateToMouse = useCallback((e: MouseEvent) => {
     const slideDivElement = slideDivRef.current;
     const glowDivElement = glowDivRef.current;
 
@@ -29,7 +29,7 @@ export const useSlideHover = () => {
         #00000000
       )
     `;
-  };
+  }, []);
 
   const handleMouseEnter = useCallback(() => {
     if (slideDivRef.current) {
@@ -45,18 +45,18 @@ export const useSlideHover = () => {
   }, [rotateToMouse, glowDivRef]);
 
   useEffect(() => {
-    if (slideDivRef.current) {
-      slideDivRef.current.addEventListener('mouseenter', handleMouseEnter);
-      slideDivRef.current.addEventListener('mouseleave', handleMouseLeave);
+    const slideDivElement = slideDivRef.current;
+    if (slideDivElement) {
+      slideDivElement.addEventListener('mouseenter', handleMouseEnter);
+      slideDivElement.addEventListener('mouseleave', handleMouseLeave);
     }
-
     return () => {
-      if (slideDivRef.current) {
-        slideDivRef.current.removeEventListener('mouseenter', handleMouseEnter);
-        slideDivRef.current.removeEventListener('mouseleave', handleMouseLeave);
+      if (slideDivElement) {
+        slideDivElement.removeEventListener('mouseenter', handleMouseEnter);
+        slideDivElement.removeEventListener('mouseleave', handleMouseLeave);
       }
     };
-  }, [slideDivRef, glowDivRef]);
+  }, [slideDivRef, glowDivRef, handleMouseEnter, handleMouseLeave]);
 
   return { slideDivRef, glowDivRef };
 };

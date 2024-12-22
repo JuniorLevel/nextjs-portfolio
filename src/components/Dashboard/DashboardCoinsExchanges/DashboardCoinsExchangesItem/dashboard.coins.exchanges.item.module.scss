@@ -1,0 +1,17 @@
+@use '../../../../themes/variables.scss';
+
+.exchangesItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: variables.$gap-sm;
+  img {
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+  .rank {
+    font-weight: bold;
+    color: variables.$dark-input-color-primary;
+  }
+}

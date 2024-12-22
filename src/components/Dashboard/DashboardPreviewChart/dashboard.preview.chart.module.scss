@@ -1,0 +1,11 @@
+@use '../../../themes/variables.scss';
+@use '../../../themes/mixins.scss';
+
+.previewChart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h3 {
+    @include mixins.title;
+  }
+}

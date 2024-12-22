@@ -1,0 +1,13 @@
+@use '../../../themes/variables.scss';
+@use '../../../themes/mixins.scss';
+
+.exchanges {
+  h3 {
+    @include mixins.title;
+  }
+  .exchangesList {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px variables.$gap-sm;
+  }
+}

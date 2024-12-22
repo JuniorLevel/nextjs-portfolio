@@ -1,0 +1,11 @@
+@use '../../../themes/variables.scss';
+
+.preview {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  h2 {
+    font-weight: bold;
+    font-size: variables.$font-size-lg;
+  }
+}

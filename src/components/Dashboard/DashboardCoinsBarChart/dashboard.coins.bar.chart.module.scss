@@ -1,0 +1,13 @@
+@use '../../../themes/variables.scss';
+@use '../../../themes/mixins.scss';
+
+.barChartBlock {
+  h3 {
+    @include mixins.title;
+  }
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

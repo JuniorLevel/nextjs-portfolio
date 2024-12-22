@@ -1,3 +1,5 @@
+@use './variables.scss';
+
 @mixin borderGradient($bg-block, $border-color, $playByHover) {
   border: 1px solid transparent;
   background:
@@ -30,4 +32,22 @@
       --bg-angle: 360deg;
     }
   }
+}
+
+@mixin tooltip {
+  background-color: variables.$dark-bg-primary;
+  padding: variables.$padding-md;
+  p {
+    margin-bottom: variables.$margin-md;
+    &:last-child {
+      margin: 0;
+    }
+  }
+}
+
+@mixin title {
+  text-align: center;
+  font-weight: bold;
+  font-size: variables.$font-size-dashboard-item-title;
+  margin-bottom: variables.$margin-md;
 }

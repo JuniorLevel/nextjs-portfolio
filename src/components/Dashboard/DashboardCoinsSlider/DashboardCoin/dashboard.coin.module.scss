@@ -1,4 +1,9 @@
 @use '../../../../themes/variables.scss';
+@use '../../../../themes/mixins.scss';
+
+.tooltip {
+  @include mixins.tooltip;
+}
 
 .coin {
   position: relative;
@@ -11,6 +16,9 @@
     position: absolute;
     top: -30px;
     left: 200px;
+    img {
+      border-radius: 50%;
+    }
   }
   .coinData {
     margin-top: variables.$margin-lg;
