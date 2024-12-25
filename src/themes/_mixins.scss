@@ -45,6 +45,12 @@
   }
 }
 
+body[data-app-theme='light'] {
+  .tooltip {
+    background-color: variables.$light-bg-primary;
+  }
+}
+
 @mixin title {
   text-align: center;
   font-weight: bold;

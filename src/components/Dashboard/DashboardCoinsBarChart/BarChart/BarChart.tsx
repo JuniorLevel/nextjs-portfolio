@@ -9,6 +9,7 @@ import {
 } from 'recharts';
 import styles from './bar.chart.module.scss';
 import { coins } from '../../../../api/fake.data';
+import { DARK_COLORS_CHART, LIGHT_COLORS_CHART } from '@/config/colors.config';
 
 type Props = {};
 
@@ -50,13 +51,21 @@ function BarChart({}: Props) {
       <Bar
         dataKey='volume'
         name='Объём торгов'
-        fill='#ba4fd2'
+        fill={
+          document.body.getAttribute('data-app-theme') === 'dark'
+            ? `${DARK_COLORS_CHART.chartColor2}`
+            : `${LIGHT_COLORS_CHART.chartColor2}`
+        }
         activeBar={<Rectangle fill='pink' stroke='blue' />}
       />
       <Bar
         dataKey='marketCap'
         name='Рыночная капитализация'
-        fill='#17ffc1'
+        fill={
+          document.body.getAttribute('data-app-theme') === 'dark'
+            ? `${DARK_COLORS_CHART.chartColor1}`
+            : `${LIGHT_COLORS_CHART.chartColor1}`
+        }
         activeBar={<Rectangle fill='gold' stroke='purple' />}
       />
     </BrChart>

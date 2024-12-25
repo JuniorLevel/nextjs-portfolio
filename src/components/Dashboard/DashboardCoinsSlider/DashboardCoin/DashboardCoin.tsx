@@ -8,6 +8,7 @@ import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
 import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
 import { LineChart, Line, YAxis, Tooltip } from 'recharts';
 import { coinsPriceMonthHistory } from '@/api/fake.data';
+import { DARK_COLORS_CHART, LIGHT_COLORS_CHART } from '@/config/colors.config';
 
 type Props = {
   coin: any;
@@ -60,7 +61,15 @@ function DashboardCoin({ coin, coinIndex }: Readonly<Props>) {
             {coin.priceChange1h < 0 ? (
               <ArrowCircleDownIcon fontSize='small' sx={{ color: 'red' }} />
             ) : (
-              <ArrowCircleUpIcon fontSize='small' sx={{ color: '#17ffc1' }} />
+              <ArrowCircleUpIcon
+                fontSize='small'
+                sx={{
+                  color:
+                    document.body.getAttribute('data-app-theme') === 'dark'
+                      ? '#17ffc1'
+                      : 'green',
+                }}
+              />
             )}
             <span
               className={
@@ -90,7 +99,15 @@ function DashboardCoin({ coin, coinIndex }: Readonly<Props>) {
           <Line
             type='monotone'
             dataKey='1'
-            stroke={coinIndex % 2 !== 0 ? 'aqua' : '#bf24e3'}
+            stroke={
+              coinIndex % 2 !== 0
+                ? document.body.getAttribute('data-app-theme') === 'dark'
+                  ? `${DARK_COLORS_CHART.chartColor1}`
+                  : `${LIGHT_COLORS_CHART.chartColor1}`
+                : document.body.getAttribute('data-app-theme') === 'dark'
+                  ? `${DARK_COLORS_CHART.chartColor2}`
+                  : `${LIGHT_COLORS_CHART.chartColor2}`
+            }
             strokeWidth={2}
             dot={false}
           />

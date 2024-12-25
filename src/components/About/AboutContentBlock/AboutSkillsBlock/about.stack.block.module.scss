@@ -31,3 +31,16 @@
     }
   }
 }
+
+body[data-app-theme='light'] {
+  .stackBlock {
+    @include mixins.borderGradient(
+      variables.$light-bg-primary,
+      variables.$light-link-bg-active,
+      false
+    );
+    span {
+      color: variables.$light-btn-color-primary;
+    }
+  }
+}

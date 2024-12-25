@@ -19,7 +19,6 @@ body {
 }
 
 body[data-app-theme='light'] {
-  transition: 1.5s ease;
   background-color: variables.$light-bg-primary;
   color: variables.$light-text-primary;
 
@@ -31,13 +30,16 @@ body[data-app-theme='light'] {
 
   .swiper-slide-prev,
   .swiper-slide-next {
-    background-color: grey;
-    background-image: linear-gradient(to right, grey, #0000);
+    background-color: variables.$light-dashboard-block-bg;
+    background-image: linear-gradient(
+      to right,
+      variables.$light-dashboard-block-bg,
+      variables.$light-dashboard-block-bg
+    );
   }
 }
 
 body[data-app-theme='dark'] {
-  transition: 1.5s ease;
   background-color: variables.$dark-bg-primary;
   color: variables.$dark-text-primary;
 

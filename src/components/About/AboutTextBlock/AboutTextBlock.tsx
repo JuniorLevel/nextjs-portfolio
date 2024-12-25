@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './about.text.block.module.scss';
 import Link from 'next/link';
+import { appRoutes } from '@/config/routes.config';
 
 export default function AboutTextBlock() {
   return (
@@ -38,7 +39,7 @@ export default function AboutTextBlock() {
           <p>
             Ищу возможность реализовать полученные знания и опыт разработки на
             реальных проектах. Если у Вас есть предложение,{' '}
-            <Link className={styles.link} href='contacts'>
+            <Link className={styles.link} href={appRoutes.CONTACTS}>
               напишите мне на почту
             </Link>
             . Готов к сотрудничеству!
@@ -51,7 +52,7 @@ export default function AboutTextBlock() {
           <li>
             Развитие df_boilerplate проекта на ReactJS с использованием UI
             библиотеки Ant Design. Подробнее на странице{' '}
-            <Link href='/projects' className={styles.link}>
+            <Link className={styles.link} href={appRoutes.PROJECTS}>
               "Мои проекты"
             </Link>
             .

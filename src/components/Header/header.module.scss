@@ -17,3 +17,11 @@
     color: variables.$dark-link-color-icon;
   }
 }
+
+body[data-app-theme='light'] {
+  .header {
+    .switchBtn {
+      color: variables.$light-link-color-icon;
+    }
+  }
+}

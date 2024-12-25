@@ -33,3 +33,13 @@
     font-size: variables.$font-size-lg;
   }
 }
+
+body[data-app-theme='light'] {
+  .imageBlock {
+    @include mixins.borderGradient(
+      variables.$light-bg-primary,
+      variables.$light-link-bg-active,
+      false
+    );
+  }
+}

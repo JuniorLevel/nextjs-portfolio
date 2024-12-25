@@ -52,3 +52,16 @@
     false
   );
 }
+
+body[data-app-theme='light'] {
+  .textBlock {
+    @include mixins.borderGradient(
+      variables.$light-bg-primary,
+      variables.$light-link-bg-active,
+      false
+    );
+    .link {
+      color: variables.$light-btn-color-primary;
+    }
+  }
+}

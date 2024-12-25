@@ -34,3 +34,11 @@
     }
   }
 }
+
+body[data-app-theme='light'] {
+  .coinsTable {
+    thead th {
+      color: variables.$light-text-primary;
+    }
+  }
+}

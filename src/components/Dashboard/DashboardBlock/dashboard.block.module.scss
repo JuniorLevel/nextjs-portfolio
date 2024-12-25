@@ -8,3 +8,9 @@
   height: 290px;
   overflow: auto;
 }
+
+body[data-app-theme='light'] {
+  .block {
+    background-color: variables.$light-dashboard-block-bg;
+  }
+}

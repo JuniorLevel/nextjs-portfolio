@@ -13,7 +13,9 @@ const LineChart = dynamic(() => import('./LineChart/LineChart'), {
 function DashboardPreviewChart({}: Props) {
   return (
     <div className={styles.previewChart}>
-      <h3>Доступные биржи для сделок</h3>
+      <h3>
+        Оценка различных показателей <br /> криптовалют
+      </h3>
       <div>{<LineChart />}</div>
     </div>
   );

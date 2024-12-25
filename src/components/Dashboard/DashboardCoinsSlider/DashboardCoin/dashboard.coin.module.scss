@@ -51,3 +51,21 @@
     margin-top: 10px;
   }
 }
+
+body[data-app-theme='light'] {
+  .coin {
+    background-color: variables.$light-dashboard-block-bg;
+    .coinData {
+      .panel {
+        .dynamic {
+          .percentUp {
+            color: green;
+          }
+          .percentDown {
+            color: red;
+          }
+        }
+      }
+    }
+  }
+}

@@ -101,3 +101,33 @@
     z-index: 1;
   }
 }
+
+body[data-app-theme='light'] {
+  .slide {
+    @include mixins.borderGradient(
+      variables.$light-bg-primary,
+      variables.$light-link-bg-active,
+      true
+    );
+  }
+  .buttons {
+    .btn {
+      a {
+        color: variables.$light-text-primary;
+      }
+    }
+    .icon {
+      svg {
+        color: variables.$light-link-color-icon;
+        &:hover {
+          color: rgba($color: variables.$light-link-color-icon, $alpha: 0.5);
+        }
+      }
+    }
+  }
+  .labels {
+    span {
+      color: variables.$light-text-primary;
+    }
+  }
+}

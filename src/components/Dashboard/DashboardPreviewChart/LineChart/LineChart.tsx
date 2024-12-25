@@ -2,6 +2,7 @@ import React from 'react';
 import { Line, LineChart, Tooltip, XAxis } from 'recharts';
 import { coins } from '@/api/fake.data';
 import styles from './line.chart.module.scss';
+import { DARK_COLORS_CHART, LIGHT_COLORS_CHART } from '@/config/colors.config';
 
 type Props = {};
 
@@ -31,7 +32,7 @@ function LinesChart({}: Props) {
   return (
     <LineChart
       width={700}
-      height={200}
+      height={185}
       data={result}
       margin={{
         top: 5,
@@ -43,28 +44,44 @@ function LinesChart({}: Props) {
       <Line
         type='monotone'
         dataKey='liquidityScore'
-        stroke='#17ffc1'
+        stroke={
+          document.body.getAttribute('data-app-theme') === 'dark'
+            ? `${DARK_COLORS_CHART.chartColor1}`
+            : `${LIGHT_COLORS_CHART.chartColor1}`
+        }
         strokeWidth={2}
         dot={false}
       />
       <Line
         type='monotone'
         dataKey='volatilityScore'
-        stroke='#bf24e3'
+        stroke={
+          document.body.getAttribute('data-app-theme') === 'dark'
+            ? `${DARK_COLORS_CHART.chartColor2}`
+            : `${LIGHT_COLORS_CHART.chartColor2}`
+        }
         strokeWidth={2}
         dot={false}
       />
       <Line
         type='monotone'
         dataKey='riskScore'
-        stroke='red'
+        stroke={
+          document.body.getAttribute('data-app-theme') === 'dark'
+            ? `${DARK_COLORS_CHART.chartColor3}`
+            : `${LIGHT_COLORS_CHART.chartColor3}`
+        }
         strokeWidth={2}
         dot={false}
       />
       <Line
         type='monotone'
         dataKey='marketCapScore'
-        stroke='aqua'
+        stroke={
+          document.body.getAttribute('data-app-theme') === 'dark'
+            ? `${DARK_COLORS_CHART.chartColor4}`
+            : `${LIGHT_COLORS_CHART.chartColor4}`
+        }
         strokeWidth={2}
         dot={false}
       />

@@ -9,3 +9,11 @@
     font-size: variables.$font-size-lg;
   }
 }
+
+body[data-app-theme='light'] {
+  .preview {
+    h2 {
+      color: #b0c6bf;
+    }
+  }
+}

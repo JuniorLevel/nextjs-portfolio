@@ -61,6 +61,26 @@ body[data-app-theme='dark'] {
 }
 
 body[data-app-theme='light'] {
+  .container {
+    @include mixins.borderGradient(
+      variables.$light-bg-primary,
+      variables.$light-link-bg-active,
+      true
+    );
+    input,
+    span {
+      color: variables.$light-text-primary;
+    }
+    .textArea {
+      color: variables.$light-text-primary;
+      &::placeholder {
+        color: variables.$light-text-primary;
+      }
+    }
+    .button {
+      color: variables.$light-text-primary;
+    }
+  }
   .toast {
     width: 400px;
     background-color: variables.$light-bg-primary;

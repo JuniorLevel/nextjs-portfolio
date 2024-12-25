@@ -15,3 +15,12 @@
     color: variables.$dark-input-color-primary;
   }
 }
+
+body[data-app-theme='light'] {
+  .exchangesItem {
+    .rank {
+      font-weight: bold;
+      color: variables.$light-text-primary;
+    }
+  }
+}
