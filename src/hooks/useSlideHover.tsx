@@ -46,7 +46,7 @@ export const useSlideHover = () => {
 
   useEffect(() => {
     const slideDivElement = slideDivRef.current;
-    if (slideDivElement) {
+    if (slideDivElement && window.matchMedia('(hover: hover)').matches) {
       slideDivElement.addEventListener('mouseenter', handleMouseEnter);
       slideDivElement.addEventListener('mouseleave', handleMouseLeave);
     }

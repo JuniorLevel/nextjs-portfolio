@@ -1,10 +1,9 @@
-import React from 'react';
-import styles from './project.slide.module.scss';
-import Image from 'next/image';
-import { IProjectData } from './projects.data';
-import { Button } from '@mui/material';
-import { FaGithub } from 'react-icons/fa';
 import { useSlideHover } from '@/hooks/useSlideHover';
+import { Button } from '@mui/material';
+import Image from 'next/image';
+import { FaGithub } from 'react-icons/fa';
+import styles from './project.slide.module.scss';
+import { IProjectData } from './projects.data';
 
 type Props = { project: IProjectData };
 
@@ -30,7 +29,11 @@ function ProjectSlide({ project }: Readonly<Props>) {
           </a>
         </Button>
         <div className={styles.icon}>
-          <a href={project.repositoryUrl} target='_blank'>
+          <a
+            href={project.repositoryUrl}
+            target='_blank'
+            aria-label='Открыть Github репозиторий проекта'
+          >
             <FaGithub />
           </a>
         </div>

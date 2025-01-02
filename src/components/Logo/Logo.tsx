@@ -1,7 +1,6 @@
+import { appRoutes } from '@/config/routes.config';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
-import { appRoutes } from '@/config/routes.config';
 import styles from './logo.module.scss';
 
 export default function Logo() {

@@ -1,0 +1,12 @@
+@use '../../../../../themes/variables.scss';
+
+.skeleton {
+  border-radius: variables.$border-radius-base !important;
+  background-color: variables.$dark-dashboard-block-bg !important;
+}
+
+body[data-app-theme='light'] {
+  .skeleton {
+    background-color: variables.$light-dashboard-block-bg !important;
+  }
+}

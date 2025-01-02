@@ -12,9 +12,16 @@
   .panel {
     display: flex;
     flex: 0 1 auto;
+    gap: variables.$gap-sm;
   }
   .switchBtn {
     color: variables.$dark-link-color-icon;
+    .darkThemeIcon {
+      display: block;
+    }
+    .lightThemeIcon {
+      display: none;
+    }
   }
 }
 
@@ -22,6 +29,12 @@ body[data-app-theme='light'] {
   .header {
     .switchBtn {
       color: variables.$light-link-color-icon;
+      .darkThemeIcon {
+        display: none;
+      }
+      .lightThemeIcon {
+        display: block;
+      }
     }
   }
 }

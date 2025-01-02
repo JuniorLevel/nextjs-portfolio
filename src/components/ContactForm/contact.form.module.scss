@@ -52,9 +52,20 @@
   }
 }
 
+@media screen and (max-width: variables.$xs-max) {
+  .container {
+    h2 {
+      font-size: variables.$font-size-dashboard-item-title;
+    }
+    .form {
+      min-width: auto;
+    }
+  }
+}
+
 body[data-app-theme='dark'] {
   .toast {
-    width: 400px;
+    width: 350px;
     background-color: variables.$border-color-primary;
     color: variables.$dark-text-secondary;
   }
@@ -82,7 +93,7 @@ body[data-app-theme='light'] {
     }
   }
   .toast {
-    width: 400px;
+    width: 350px;
     background-color: variables.$light-bg-primary;
   }
 }

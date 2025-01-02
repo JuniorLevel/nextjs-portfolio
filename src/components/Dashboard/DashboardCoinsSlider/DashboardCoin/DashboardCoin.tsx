@@ -1,14 +1,13 @@
 'use client';
 
-import React from 'react';
-import styles from './dashboard.coin.module.scss';
-import Image from 'next/image';
-import SyncAltIcon from '@mui/icons-material/SyncAlt';
-import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
-import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
-import { LineChart, Line, YAxis, Tooltip } from 'recharts';
 import { coinsPriceMonthHistory } from '@/api/fake.data';
 import { DARK_COLORS_CHART, LIGHT_COLORS_CHART } from '@/config/colors.config';
+import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
+import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
+import SyncAltIcon from '@mui/icons-material/SyncAlt';
+import Image from 'next/image';
+import { Line, LineChart, Tooltip, YAxis } from 'recharts';
+import styles from './dashboard.coin.module.scss';
 
 type Props = {
   coin: any;
@@ -22,7 +21,7 @@ const CustomTooltip = ({
   active: boolean;
   payload: any;
 }) => {
-  if (active && payload && payload.length) {
+  if (active && payload?.length) {
     return (
       <div className={styles.tooltip}>
         <p>
@@ -38,6 +37,16 @@ function DashboardCoin({ coin, coinIndex }: Readonly<Props>) {
   const filteredData =
     coinsPriceMonthHistory.filter((item) => item.id === coin.id)[0]?.history ||
     [];
+
+  const chartStrokeColor1 =
+    document.body.getAttribute('data-app-theme') === 'dark'
+      ? DARK_COLORS_CHART.chartColor1
+      : LIGHT_COLORS_CHART.chartColor1;
+
+  const chartStrokeColor2 =
+    document.body.getAttribute('data-app-theme') === 'dark'
+      ? DARK_COLORS_CHART.chartColor2
+      : LIGHT_COLORS_CHART.chartColor2;
 
   return (
     <div className={styles.coin}>
@@ -99,15 +108,7 @@ function DashboardCoin({ coin, coinIndex }: Readonly<Props>) {
           <Line
             type='monotone'
             dataKey='1'
-            stroke={
-              coinIndex % 2 !== 0
-                ? document.body.getAttribute('data-app-theme') === 'dark'
-                  ? `${DARK_COLORS_CHART.chartColor1}`
-                  : `${LIGHT_COLORS_CHART.chartColor1}`
-                : document.body.getAttribute('data-app-theme') === 'dark'
-                  ? `${DARK_COLORS_CHART.chartColor2}`
-                  : `${LIGHT_COLORS_CHART.chartColor2}`
-            }
+            stroke={coinIndex % 2 !== 0 ? chartStrokeColor1 : chartStrokeColor2}
             strokeWidth={2}
             dot={false}
           />

@@ -1,9 +1,8 @@
 'use client';
 
-import React from 'react';
-import styles from './about.module.scss';
-import AboutTextBlock from '@/components/About/AboutTextBlock/AboutTextBlock';
 import AboutContentBlock from '@/components/About/AboutContentBlock/AboutContentBlock';
+import AboutTextBlock from '@/components/About/AboutTextBlock/AboutTextBlock';
+import styles from './about.module.scss';
 
 export default function AboutPage() {
   return (

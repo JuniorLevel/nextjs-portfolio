@@ -65,3 +65,10 @@ body[data-app-theme='light'] {
     }
   }
 }
+
+@media screen and (max-width: variables.$md-max) {
+  .textBlock {
+    flex: 0 0 auto;
+    order: 2;
+  }
+}

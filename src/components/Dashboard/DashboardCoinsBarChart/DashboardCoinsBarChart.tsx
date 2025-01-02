@@ -1,12 +1,13 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import React from 'react';
+import Loader from 'ui/Loader/Loader';
 import styles from './dashboard.coins.bar.chart.module.scss';
 
 type Props = {};
 
 const BarChart = dynamic(() => import('./BarChart/BarChart'), {
+  loading: () => <Loader height={150} />,
   ssr: false,
 });
 

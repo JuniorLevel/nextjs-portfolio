@@ -1,6 +1,5 @@
 import { Link } from '@mui/material';
 import Image from 'next/image';
-import React from 'react';
 import styles from './dashboard.coins.exchanges.item.module.scss';
 
 type Props = { item: any };

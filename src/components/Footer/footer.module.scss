@@ -1,6 +1,18 @@
 @use '../../themes/variables.scss';
 
 .footer {
-  color: variables.$border-color-primary;
+  color: variables.$dark-btn-color-primary;
   text-align: center;
+}
+
+body[data-app-theme='light'] {
+  .footer {
+    color: #000000;
+  }
+}
+
+@media screen and (max-width: variables.$md-max) {
+  .footer {
+    margin-top: variables.$margin-md;
+  }
 }

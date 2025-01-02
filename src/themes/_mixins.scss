@@ -27,6 +27,9 @@
       animation-play-state: paused;
     }
   }
+  @media (hover: none) {
+    animation-play-state: running !important;
+  }
   @keyframes spin {
     to {
       --bg-angle: 360deg;
@@ -56,4 +59,12 @@ body[data-app-theme='light'] {
   font-weight: bold;
   font-size: variables.$font-size-dashboard-item-title;
   margin-bottom: variables.$margin-md;
+}
+
+@mixin responsiveSwiperContainer($breakpoint, $width) {
+  @media screen and (max-width: $breakpoint) {
+    .mySwiper {
+      max-width: $width;
+    }
+  }
 }

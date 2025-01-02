@@ -1,14 +1,15 @@
+'use client';
+
 import DashboardBlock from '@/components/Dashboard/DashboardBlock/DashboardBlock';
-import React from 'react';
-import styles from './dashboard.module.scss';
-import DashboardCoinsSlider from '@/components/Dashboard/DashboardCoinsSlider/DashboardCoinsSlider';
-import { Grid2 as Grid } from '@mui/material';
-import DashboardCoinsTable from '@/components/Dashboard/DashboardCoinsTable/DashboardCoinsTable';
-import DashboardPreviewInfo from '@/components/Dashboard/DashboardPreviewInfo/DashboardPreviewInfo';
-import BgImage from '../../../../public/preview.jpg';
 import DashboardCoinsPieChart from '@/components/Dashboard/DashboardCoinsBarChart/DashboardCoinsBarChart';
 import DashboardCoinsExchanges from '@/components/Dashboard/DashboardCoinsExchanges/DashboardCoinsExchanges';
+import DashboardCoinsSlider from '@/components/Dashboard/DashboardCoinsSlider/DashboardCoinsSlider';
+import DashboardCoinsTable from '@/components/Dashboard/DashboardCoinsTable/DashboardCoinsTable';
 import DashboardPreviewChart from '@/components/Dashboard/DashboardPreviewChart/DashboardPreviewChart';
+import DashboardPreviewInfo from '@/components/Dashboard/DashboardPreviewInfo/DashboardPreviewInfo';
+import { Grid2 as Grid } from '@mui/material';
+import BgImage from '../../../../public/preview.webp';
+import styles from './dashboard.module.scss';
 
 export default function DashboardPage() {
   return (

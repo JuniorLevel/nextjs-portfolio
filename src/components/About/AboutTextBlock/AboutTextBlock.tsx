@@ -1,13 +1,12 @@
-import React from 'react';
-import styles from './about.text.block.module.scss';
-import Link from 'next/link';
 import { appRoutes } from '@/config/routes.config';
+import Link from 'next/link';
+import styles from './about.text.block.module.scss';
 
 export default function AboutTextBlock() {
   return (
     <article className={styles.textBlock}>
       <div className={styles.textBlockItem}>
-        <h3 className={styles.title}>Биография</h3>
+        <h2 className={styles.title}>Биография</h2>
         <div className={styles.info}>
           <p>
             Приветствую, меня зовут Дмитрий! Мне 23, разработчик с незаконченным

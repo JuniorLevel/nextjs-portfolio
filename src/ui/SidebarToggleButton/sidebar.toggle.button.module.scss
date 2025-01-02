@@ -1,0 +1,22 @@
+@use '../../themes/variables.scss';
+
+.button {
+  display: none;
+  svg {
+    color: variables.$dark-btn-color-primary;
+  }
+}
+
+@media screen and (max-width: variables.$xs-max) {
+  .button {
+    display: block;
+  }
+}
+
+body[data-app-theme='light'] {
+  .button {
+    svg {
+      color: variables.$light-link-color-icon;
+    }
+  }
+}

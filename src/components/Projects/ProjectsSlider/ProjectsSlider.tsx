@@ -1,18 +1,19 @@
 'use client';
-import React from 'react';
+import { useMediaQuery } from 'react-responsive';
+import { Autoplay, EffectCoverflow, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectCoverflow, Autoplay, Navigation } from 'swiper/modules';
-import ProjectSlide from './ProjectSlide/ProjectSlide';
-import { projectsData } from './ProjectSlide/projects.data';
 import styles from './projects.slider.module.scss';
-import 'swiper/scss';
-import 'swiper/scss/effect-coverflow';
-import 'swiper/scss/navigation';
+import { projectsData } from './ProjectSlide/projects.data';
+import ProjectSlide from './ProjectSlide/ProjectSlide';
 
 function ProjectsSlider() {
+  const isDesktopOrLaptop = useMediaQuery({
+    query: '(min-width: 768px)',
+  });
   return (
     <Swiper
-      effect={'coverflow'}
+      effect={isDesktopOrLaptop ? 'coverflow' : 'slide'}
+      speed={isDesktopOrLaptop ? 300 : 10}
       grabCursor={true}
       centeredSlides={true}
       slidesPerView={'auto'}

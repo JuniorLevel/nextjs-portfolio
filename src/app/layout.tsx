@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
-import '../themes/global.scss';
-import ThemeProvider from '../context/ThemeProvider/ThemeProvider';
 import { cookies } from 'next/headers';
-import 'react-toastify/dist/ReactToastify.css';
+import React from 'react';
 import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import ThemeProvider from '../context/ThemeProvider/ThemeProvider';
+import '../themes/global.scss';
 
 const roboto = Roboto({ subsets: ['latin'], weight: ['400'] });
 

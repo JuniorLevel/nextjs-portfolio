@@ -1,8 +1,16 @@
 @use 'scss-reset/reset.scss';
 @use './variables.scss';
+@use 'swiper/scss';
+@use 'swiper/scss/effect-coverflow';
+@use 'swiper/scss/navigation';
+@use 'swiper/scss/scrollbar';
 
 :root {
   --bg-angle: 0deg;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 @property --bg-angle {
@@ -16,15 +24,17 @@ body {
   .swiper-slide {
     border-radius: variables.$border-radius-base;
   }
+  text-rendering: auto;
 }
 
 body[data-app-theme='light'] {
   background-color: variables.$light-bg-primary;
   color: variables.$light-text-primary;
 
-  .swiper-pagination {
-    span {
-      background-color: variables.$dark-link-color-icon;
+  .swiper-button-prev,
+  .swiper-button-next {
+    &::after {
+      color: black;
     }
   }
 
@@ -43,12 +53,6 @@ body[data-app-theme='dark'] {
   background-color: variables.$dark-bg-primary;
   color: variables.$dark-text-primary;
 
-  .swiper-pagination {
-    span {
-      background-color: variables.$dark-link-color-icon;
-    }
-  }
-
   .swiper-button-prev,
   .swiper-button-next {
     &::after {
@@ -60,5 +64,16 @@ body[data-app-theme='dark'] {
   .swiper-slide-next {
     background-color: transparent;
     background-image: linear-gradient(to right, #644b8e2e, #644b8e2e);
+  }
+}
+
+@media screen and (max-width: variables.$sm-max) {
+  body {
+    .swiper-button-prev,
+    .swiper-button-next {
+      &::after {
+        font-size: variables.$font-size-dashboard-item-title;
+      }
+    }
   }
 }

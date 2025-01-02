@@ -1,6 +1,5 @@
-import React from 'react';
-import styles from './about.image.block.module.scss';
 import Image from 'next/image';
+import styles from './about.image.block.module.scss';
 
 export default function AboutImageBlock() {
   return (

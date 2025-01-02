@@ -1,12 +1,13 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import React from 'react';
+import Loader from 'ui/Loader/Loader';
 import styles from './dashboard.preview.chart.module.scss';
 
 type Props = {};
 
 const LineChart = dynamic(() => import('./LineChart/LineChart'), {
+  loading: () => <Loader height={185} />,
   ssr: false,
 });
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './dashboard.preview.info.module.scss';
 
 type Props = {};

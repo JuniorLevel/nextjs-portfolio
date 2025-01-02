@@ -13,3 +13,9 @@
   max-height: 850px;
   height: 100%;
 }
+
+@media screen and (max-width: variables.$md-max) {
+  .layout {
+    height: auto;
+  }
+}

@@ -44,3 +44,9 @@ body[data-app-theme='light'] {
     }
   }
 }
+
+@media screen and (max-width: variables.$md-max) {
+  .stackBlock {
+    height: 100%;
+  }
+}

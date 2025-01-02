@@ -8,6 +8,6 @@
   .exchangesList {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 32px variables.$gap-sm;
+    gap: variables.$gap-xl 0;
   }
 }
