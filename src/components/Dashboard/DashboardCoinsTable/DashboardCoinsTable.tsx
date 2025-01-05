@@ -1,8 +1,7 @@
-import React from 'react';
-import styles from './dashboard.coins.table.module.scss';
-import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import { coins } from '../../../api/fake.data';
+import styles from './dashboard.coins.table.module.scss';
 
 type Props = {};
 

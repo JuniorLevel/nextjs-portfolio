@@ -8,7 +8,9 @@ import styles from './(layout)/layout.module.scss';
 export default function NotFound() {
   return (
     <div className={styles.wrapper}>
-      <Sidebar />
+      <div className={styles.sidebarWrapper}>
+        <Sidebar />
+      </div>
       <div className={styles.container}>
         <Header />
         <main className={styles.content}>

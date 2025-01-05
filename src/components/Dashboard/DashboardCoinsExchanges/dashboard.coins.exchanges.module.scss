@@ -7,7 +7,15 @@
   }
   .exchangesList {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: variables.$gap-xl 0;
+  }
+}
+
+@media screen and (max-width: 385px) {
+  .exchanges {
+    .exchangesList {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 }

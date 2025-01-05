@@ -6,7 +6,7 @@ import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
 import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
 import SyncAltIcon from '@mui/icons-material/SyncAlt';
 import Image from 'next/image';
-import { Line, LineChart, Tooltip, YAxis } from 'recharts';
+import { Line, LineChart, ResponsiveContainer, Tooltip, YAxis } from 'recharts';
 import styles from './dashboard.coin.module.scss';
 
 type Props = {
@@ -92,27 +92,33 @@ function DashboardCoin({ coin, coinIndex }: Readonly<Props>) {
         <div>{Number(coin.price).toFixed(5)}$</div>
       </div>
       <div className={styles.chart}>
-        <LineChart
-          width={380}
-          height={130}
-          data={filteredData}
-          margin={{
-            top: 0,
-            right: 20,
-            left: 20,
-            bottom: 10,
-          }}
+        <ResponsiveContainer
+          width='100%'
+          height={110}
+          initialDimension={{ width: 380, height: 110 }}
         >
-          <YAxis domain={['auto', 'auto']} hide />
-          <Tooltip content={<CustomTooltip active payload />} />
-          <Line
-            type='monotone'
-            dataKey='1'
-            stroke={coinIndex % 2 !== 0 ? chartStrokeColor1 : chartStrokeColor2}
-            strokeWidth={2}
-            dot={false}
-          />
-        </LineChart>
+          <LineChart
+            data={filteredData}
+            margin={{
+              top: 0,
+              right: 20,
+              left: 20,
+              bottom: 10,
+            }}
+          >
+            <YAxis domain={['auto', 'auto']} hide />
+            <Tooltip content={<CustomTooltip active payload />} />
+            <Line
+              type='monotone'
+              dataKey='1'
+              stroke={
+                coinIndex % 2 !== 0 ? chartStrokeColor1 : chartStrokeColor2
+              }
+              strokeWidth={2}
+              dot={false}
+            />
+          </LineChart>
+        </ResponsiveContainer>
       </div>
     </div>
   );

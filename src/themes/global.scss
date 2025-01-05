@@ -3,7 +3,6 @@
 @use 'swiper/scss';
 @use 'swiper/scss/effect-coverflow';
 @use 'swiper/scss/navigation';
-@use 'swiper/scss/scrollbar';
 
 :root {
   --bg-angle: 0deg;
@@ -25,6 +24,9 @@ body {
     border-radius: variables.$border-radius-base;
   }
   text-rendering: auto;
+  .MuiButtonBase-root {
+    background-color: transparent !important;
+  }
 }
 
 body[data-app-theme='light'] {
@@ -47,6 +49,17 @@ body[data-app-theme='light'] {
       variables.$light-dashboard-block-bg
     );
   }
+  .MuiPagination-root {
+    margin-top: 26px;
+    ul {
+      justify-content: center;
+      li {
+        button {
+          color: variables.$light-link-color-icon;
+        }
+      }
+    }
+  }
 }
 
 body[data-app-theme='dark'] {
@@ -64,6 +77,17 @@ body[data-app-theme='dark'] {
   .swiper-slide-next {
     background-color: transparent;
     background-image: linear-gradient(to right, #644b8e2e, #644b8e2e);
+  }
+  .MuiPagination-root {
+    margin-top: 26px;
+    ul {
+      justify-content: center;
+      li {
+        button {
+          color: variables.$dark-btn-color-primary;
+        }
+      }
+    }
   }
 }
 

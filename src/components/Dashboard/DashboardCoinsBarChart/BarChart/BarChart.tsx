@@ -1,15 +1,15 @@
-import React from 'react';
+import { DARK_COLORS_CHART, LIGHT_COLORS_CHART } from '@/config/colors.config';
 import {
   Bar,
   BarChart as BrChart,
   Legend,
   Rectangle,
-  XAxis,
+  ResponsiveContainer,
   Tooltip,
+  XAxis,
 } from 'recharts';
-import styles from './bar.chart.module.scss';
 import { coins } from '../../../../api/fake.data';
-import { DARK_COLORS_CHART, LIGHT_COLORS_CHART } from '@/config/colors.config';
+import styles from './bar.chart.module.scss';
 
 type Props = {};
 
@@ -35,40 +35,44 @@ const CustomTooltip = ({
 
 function BarChart({}: Props) {
   return (
-    <BrChart
-      className={styles.barChart}
-      width={500}
+    <ResponsiveContainer
+      width='100%'
       height={170}
-      data={result}
-      margin={{
-        top: -1250,
-        left: 20,
-      }}
+      initialDimension={{ width: 500, height: 170 }}
     >
-      <XAxis dataKey='name' />
-      <Tooltip content={<CustomTooltip active payload />} />
-      <Legend />
-      <Bar
-        dataKey='volume'
-        name='Объём торгов'
-        fill={
-          document.body.getAttribute('data-app-theme') === 'dark'
-            ? `${DARK_COLORS_CHART.chartColor2}`
-            : `${LIGHT_COLORS_CHART.chartColor2}`
-        }
-        activeBar={<Rectangle fill='pink' stroke='blue' />}
-      />
-      <Bar
-        dataKey='marketCap'
-        name='Рыночная капитализация'
-        fill={
-          document.body.getAttribute('data-app-theme') === 'dark'
-            ? `${DARK_COLORS_CHART.chartColor1}`
-            : `${LIGHT_COLORS_CHART.chartColor1}`
-        }
-        activeBar={<Rectangle fill='gold' stroke='purple' />}
-      />
-    </BrChart>
+      <BrChart
+        className={styles.barChart}
+        data={result}
+        margin={{
+          top: -1250,
+          left: 20,
+        }}
+      >
+        <XAxis dataKey='name' />
+        <Tooltip content={<CustomTooltip active payload />} />
+        <Legend />
+        <Bar
+          dataKey='volume'
+          name='Объём торгов'
+          fill={
+            document.body.getAttribute('data-app-theme') === 'dark'
+              ? `${DARK_COLORS_CHART.chartColor2}`
+              : `${LIGHT_COLORS_CHART.chartColor2}`
+          }
+          activeBar={<Rectangle fill='pink' stroke='blue' />}
+        />
+        <Bar
+          dataKey='marketCap'
+          name='Рыночная капитализация'
+          fill={
+            document.body.getAttribute('data-app-theme') === 'dark'
+              ? `${DARK_COLORS_CHART.chartColor1}`
+              : `${LIGHT_COLORS_CHART.chartColor1}`
+          }
+          activeBar={<Rectangle fill='gold' stroke='purple' />}
+        />
+      </BrChart>
+    </ResponsiveContainer>
   );
 }
 

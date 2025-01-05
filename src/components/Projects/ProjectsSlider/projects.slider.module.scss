@@ -5,8 +5,109 @@
   max-width: 1400px;
 }
 
+.mobileListProjects {
+  display: none;
+  text-align: center;
+  hr {
+    background-color: variables.$border-color-primary;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 100px;
+    .image {
+      width: auto;
+      height: auto;
+      img {
+        object-fit: cover;
+      }
+    }
+  }
+  .title {
+    padding-top: variables.$padding-md;
+    font-style: italic;
+    font-size: variables.$font-size-lg;
+    margin-bottom: variables.$margin-md;
+  }
+  .description {
+    text-indent: variables.$text-indent;
+    margin-bottom: variables.$margin-lg;
+  }
+  .buttons {
+    display: flex;
+    gap: variables.$gap-sm;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: variables.$margin-lg;
+    text-align: center;
+    .btn {
+      border: 1px solid variables.$border-color-primary;
+      border-radius: variables.$border-radius-sm;
+      max-width: 300px;
+      width: 100%;
+      a {
+        background-color: transparent;
+        color: variables.$dark-btn-color-primary;
+        text-decoration: none;
+      }
+    }
+    .icon {
+      svg {
+        font-size: variables.$font-size-lg;
+        color: variables.$dark-link-color-icon;
+      }
+    }
+    z-index: 10;
+  }
+  .labels {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: end;
+    gap: variables.$gap-sm;
+    font-style: italic;
+    span {
+      margin-right: variables.$margin-sm;
+      &:last-child {
+        margin: 0;
+      }
+      padding: variables.$padding-sm;
+      background-color: rgba(variables.$dark-btn-color-primary, 0.3);
+      font-weight: bold;
+      border-radius: variables.$border-radius-sm;
+    }
+  }
+}
+
+body[data-app-theme='light'] {
+  .buttons {
+    .btn {
+      a {
+        color: variables.$light-text-primary;
+      }
+    }
+    .icon {
+      svg {
+        color: variables.$light-link-color-icon;
+      }
+    }
+  }
+}
+
 @include mixins.responsiveSwiperContainer(variables.$xl-max, 1000px);
 @include mixins.responsiveSwiperContainer(variables.$lg-max, 800px);
 @include mixins.responsiveSwiperContainer(variables.$md-max, 600px);
 @include mixins.responsiveSwiperContainer(variables.$sm-max, 400px);
 @include mixins.responsiveSwiperContainer(variables.$xs-max, 320px);
+
+@media screen and (max-width: variables.$sm-max) {
+  .mySwiper {
+    display: none;
+  }
+  .mobileListProjects {
+    display: block;
+  }
+}

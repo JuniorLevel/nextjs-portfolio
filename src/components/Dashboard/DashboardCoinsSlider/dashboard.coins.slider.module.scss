@@ -1,0 +1,18 @@
+@use '../../../themes/variables.scss';
+@use '../../../themes/mixins.scss';
+
+.mySwiper {
+  max-width: calc(1920px * 0.7);
+}
+
+@include mixins.responsiveSwiperContainer(
+  variables.$xl-max,
+  calc(1599px * 0.5)
+);
+@include mixins.responsiveSwiperContainer(
+  variables.$lg-max,
+  calc(1199px * 0.5)
+);
+@include mixins.responsiveSwiperContainer(variables.$md-max, calc(991px * 0.5));
+@include mixins.responsiveSwiperContainer(variables.$sm-max, calc(767px * 0.5));
+@include mixins.responsiveSwiperContainer(variables.$xs-max, calc(575px * 0.5));

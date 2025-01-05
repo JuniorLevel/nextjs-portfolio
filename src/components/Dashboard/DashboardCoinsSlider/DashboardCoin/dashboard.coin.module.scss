@@ -24,6 +24,7 @@
     margin-top: variables.$margin-lg;
     .panel {
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
       margin-bottom: variables.$margin-sm;
       .ratio {

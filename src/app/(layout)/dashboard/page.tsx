@@ -15,35 +15,33 @@ export default function DashboardPage() {
   return (
     <section className={styles.container}>
       <Grid container rowSpacing={4}>
-        <Grid size={12} container spacing={4} sx={{ height: '290px' }}>
-          <Grid size={6}>
+        <Grid size={12} container spacing={4}>
+          <Grid size={{ xl: 6, lg: 6, md: 12, sm: 12, xs: 12 }}>
             <DashboardBlock bgImage={BgImage.src}>
               <DashboardPreviewInfo />
             </DashboardBlock>
           </Grid>
-          <Grid size={6}>
+          <Grid size={{ xl: 6, lg: 6, md: 12, sm: 12, xs: 12 }}>
             <DashboardBlock>
               <DashboardPreviewChart />
             </DashboardBlock>
           </Grid>
         </Grid>
-        <Grid size={12}>
-          <DashboardCoinsSlider />
-        </Grid>
-        <Grid size={12} container spacing={4} sx={{ height: '290px' }}>
-          <Grid size={{ xl: 4 }}>
+        <Grid size={12}>{<DashboardCoinsSlider />}</Grid>
+        <Grid size={12} container spacing={4}>
+          <Grid size={{ xl: 4, lg: 6, md: 12, sm: 12, xs: 12 }}>
             <DashboardBlock>
               <DashboardCoinsExchanges />
             </DashboardBlock>
           </Grid>
-          <Grid size={{ xl: 4 }}>
-            <DashboardBlock>
-              <DashboardCoinsPieChart />
-            </DashboardBlock>
-          </Grid>
-          <Grid size={{ xl: 4 }}>
+          <Grid size={{ xl: 4, lg: 6, md: 12, sm: 12, xs: 12 }}>
             <DashboardBlock>
               <DashboardCoinsTable />
+            </DashboardBlock>
+          </Grid>
+          <Grid size={{ xl: 4, lg: 12, md: 12, sm: 12, xs: 12 }}>
+            <DashboardBlock>
+              <DashboardCoinsPieChart />
             </DashboardBlock>
           </Grid>
         </Grid>

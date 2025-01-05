@@ -42,3 +42,9 @@ body[data-app-theme='light'] {
     }
   }
 }
+
+@media screen and (max-width: variables.$xs-max) {
+  .coinsTable {
+    font-size: variables.$font-size-xs;
+  }
+}

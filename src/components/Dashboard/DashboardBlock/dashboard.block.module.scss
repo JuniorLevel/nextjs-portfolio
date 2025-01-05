@@ -14,3 +14,10 @@ body[data-app-theme='light'] {
     background-color: variables.$light-dashboard-block-bg;
   }
 }
+
+@media screen and (max-width: variables.$lg-max) {
+  .block {
+    overflow: visible;
+    height: 100%;
+  }
+}
