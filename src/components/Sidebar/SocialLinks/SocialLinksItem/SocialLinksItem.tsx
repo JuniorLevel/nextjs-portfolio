@@ -1,12 +1,14 @@
-import React from 'react';
-import { IconType } from 'react-icons';
-import styles from './social.links.item.module.scss';
+'use client';
+
+import { SvgIconComponent } from '@mui/icons-material';
 import { Tooltip } from '@mui/material';
+import React from 'react';
+import styles from './social.links.item.module.scss';
 
 type Props = {
   title: string;
   href: string;
-  icon: IconType;
+  icon: SvgIconComponent;
 };
 
 export default function SocialLinksItem({

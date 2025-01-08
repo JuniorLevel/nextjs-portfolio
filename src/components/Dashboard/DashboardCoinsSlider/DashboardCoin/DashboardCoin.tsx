@@ -2,7 +2,7 @@
 
 import { coinsPriceMonthHistory } from '@/api/fake.data';
 import { DARK_COLORS_CHART, LIGHT_COLORS_CHART } from '@/config/colors.config';
-import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
+import { ArrowCircleDown } from '@mui/icons-material';
 import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
 import SyncAltIcon from '@mui/icons-material/SyncAlt';
 import Image from 'next/image';
@@ -33,20 +33,18 @@ const CustomTooltip = ({
   }
 };
 
+const getThemeColors = () => {
+  return document.body.getAttribute('data-app-theme') === 'dark'
+    ? DARK_COLORS_CHART
+    : LIGHT_COLORS_CHART;
+};
+
 function DashboardCoin({ coin, coinIndex }: Readonly<Props>) {
   const filteredData =
-    coinsPriceMonthHistory.filter((item) => item.id === coin.id)[0]?.history ||
-    [];
-
-  const chartStrokeColor1 =
-    document.body.getAttribute('data-app-theme') === 'dark'
-      ? DARK_COLORS_CHART.chartColor1
-      : LIGHT_COLORS_CHART.chartColor1;
-
-  const chartStrokeColor2 =
-    document.body.getAttribute('data-app-theme') === 'dark'
-      ? DARK_COLORS_CHART.chartColor2
-      : LIGHT_COLORS_CHART.chartColor2;
+    coinsPriceMonthHistory.find((item) => item.id === coin.id)?.history ?? [];
+  const themeColors = getThemeColors();
+  const chartStrokeColor1 = themeColors.chartColor1;
+  const chartStrokeColor2 = themeColors.chartColor2;
 
   return (
     <div className={styles.coin}>
@@ -68,17 +66,9 @@ function DashboardCoin({ coin, coinIndex }: Readonly<Props>) {
           <div className={styles.dynamic}>
             За последний час
             {coin.priceChange1h < 0 ? (
-              <ArrowCircleDownIcon fontSize='small' sx={{ color: 'red' }} />
+              <ArrowCircleDown className={styles.downIcon} fontSize='small' />
             ) : (
-              <ArrowCircleUpIcon
-                fontSize='small'
-                sx={{
-                  color:
-                    document.body.getAttribute('data-app-theme') === 'dark'
-                      ? '#17ffc1'
-                      : 'green',
-                }}
-              />
+              <ArrowCircleUpIcon className={styles.upIcon} fontSize='small' />
             )}
             <span
               className={

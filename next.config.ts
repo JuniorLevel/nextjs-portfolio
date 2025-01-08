@@ -1,22 +1,24 @@
 import type { NextConfig } from 'next';
-import { appRoutes } from './src/config/routes.config';
 
 const nextConfig: NextConfig = {
+  experimental: {
+    optimizePackageImports: [
+      '@emailjs/browser',
+      'swiper',
+      'react-responsive',
+      'react-toastify',
+      'yup',
+      'formik',
+      '@emotion/styled',
+      'emotion/react',
+    ],
+  },
   reactStrictMode: true,
   eslint: {
     dirs: ['src'],
   },
   sassOptions: {
     silenceDeprecations: ['legacy-js-api'],
-  },
-  async redirects() {
-    return [
-      {
-        source: '/',
-        destination: appRoutes.DASHBOARD,
-        permanent: true,
-      },
-    ];
   },
   images: {
     remotePatterns: [
@@ -29,3 +31,9 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+
+// const withBundleAnalyzer = require('@next/bundle-analyzer')({
+//   enabled: process.env.ANALYZE === 'true',
+// });
+
+// module.exports = withBundleAnalyzer(nextConfig);

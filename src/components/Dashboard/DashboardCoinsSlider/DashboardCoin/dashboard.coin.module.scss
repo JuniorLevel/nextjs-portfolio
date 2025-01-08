@@ -39,11 +39,17 @@
         display: flex;
         align-items: center;
         gap: 4px;
-        .percentUp {
-          color: #17ffc1;
-        }
         .percentDown {
-          color: red;
+          color: variables.$dark-percent-down-color;
+        }
+        .downIcon {
+          color: variables.$dark-percent-down-color;
+        }
+        .percentUp {
+          color: variables.$dark-percent-up-color;
+        }
+        .upIcon {
+          color: variables.$dark-percent-up-color;
         }
       }
     }
@@ -59,8 +65,17 @@ body[data-app-theme='light'] {
     .coinData {
       .panel {
         .dynamic {
+          .percentDown {
+            color: variables.$light-percent-down-color;
+          }
+          .downIcon {
+            color: variables.$light-percent-down-color;
+          }
           .percentUp {
-            color: green;
+            color: variables.$light-percent-up-color;
+          }
+          .upIcon {
+            color: variables.$light-percent-up-color;
           }
         }
         span {

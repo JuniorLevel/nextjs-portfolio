@@ -1,4 +1,4 @@
-@use '../../themes/variables.scss';
+@use '../themes/variables.scss';
 
 .wrapper {
   height: 100vh;
@@ -49,27 +49,6 @@
           $alpha: 0.1
         );
       }
-    }
-  }
-}
-
-.drawer {
-  div {
-    background-color: rgba($color: variables.$dark-bg-primary, $alpha: 0.8);
-  }
-}
-
-body[data-app-theme='light'] {
-  .notFound {
-    .notFound404 {
-      .btn {
-        color: variables.$light-text-primary;
-      }
-    }
-  }
-  .drawer {
-    div {
-      background-color: rgba($color: variables.$light-bg-primary, $alpha: 0.8);
     }
   }
 }

@@ -16,4 +16,11 @@ body[data-app-theme='light'] {
       color: #b0c6bf;
     }
   }
+  @media screen and (max-width: variables.$sm-max) {
+    .preview {
+      h2 {
+        color: black;
+      }
+    }
+  }
 }

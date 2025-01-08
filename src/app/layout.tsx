@@ -1,11 +1,16 @@
+import Footer from '@/components/Footer/Footer';
+import Header from '@/components/Header/Header';
+import Sidebar from '@/components/Sidebar/Sidebar';
 import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
 import { cookies } from 'next/headers';
 import React from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import DrawerSidebar from 'ui/DrawerSidebar/DrawerSidebar';
 import ThemeProvider from '../context/ThemeProvider/ThemeProvider';
 import '../themes/global.scss';
+import styles from './layout.module.scss';
 
 const roboto = Roboto({ subsets: ['latin'], weight: ['400'] });
 
@@ -30,7 +35,17 @@ export default async function RootLayout({
         data-app-theme={theme?.value ?? 'dark'}
       >
         <ThemeProvider>
-          {children}
+          <div className={styles.wrapper}>
+            <div className={styles.sidebarWrapper}>
+              <Sidebar />
+            </div>
+            <div className={styles.container}>
+              <Header />
+              <main className={styles.content}>{children}</main>
+              <Footer />
+            </div>
+            <DrawerSidebar />
+          </div>
           <ToastContainer />
         </ThemeProvider>
       </body>

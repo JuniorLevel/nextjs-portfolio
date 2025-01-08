@@ -21,3 +21,9 @@ body[data-app-theme='light'] {
     height: 100%;
   }
 }
+
+@media screen and (max-width: variables.$sm-max) {
+  .block {
+    background-image: none !important;
+  }
+}

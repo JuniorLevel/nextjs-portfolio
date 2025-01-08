@@ -11,7 +11,7 @@ function DashboardBlock({ children, bgImage }: Readonly<Props>) {
     <div
       className={styles.block}
       style={{
-        backgroundImage: `url(${bgImage})`,
+        backgroundImage: `url(${bgImage ?? ''})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundPositionX: '120px',

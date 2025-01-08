@@ -1,7 +1,6 @@
-import React from 'react';
 import { ISidebarNavItem } from './sidebar.nav';
-import SidebarNavLink from './SidebarNavLink/SidebarNavLink';
 import styles from './sidebar.nav.module.scss';
+import SidebarNavLink from './SidebarNavLink/SidebarNavLink';
 
 type Props = { sidebarLinks: ISidebarNavItem[] };
 

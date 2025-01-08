@@ -20,7 +20,7 @@ const oswald = Oswald({ subsets: ['latin'], weight: ['400'] });
 export default function Header() {
   const pathname = usePathname();
   const info = getCurrentHeaderInfo(pathname);
-  const { userTheme, setUserTheme, isOpenSidebarMenu, setIsOpenSidebarMenu } =
+  const { userTheme, setUserTheme, setIsOpenSidebarMenu } =
     useContext(ThemeContext);
 
   return (

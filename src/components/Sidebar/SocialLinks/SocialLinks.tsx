@@ -1,6 +1,5 @@
-import React from 'react';
-import styles from './social.links.module.scss';
 import { ISocialLinksItem } from './social.links';
+import styles from './social.links.module.scss';
 import SocialLinksItem from './SocialLinksItem/SocialLinksItem';
 
 type Props = {

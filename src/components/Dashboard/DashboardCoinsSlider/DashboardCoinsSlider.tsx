@@ -14,7 +14,7 @@ const DashboardCoin = dynamic(() => import('./DashboardCoin/DashboardCoin'), {
 
 const { result } = coins;
 
-function DashboardCoinsSlider() {
+export default function DashboardCoinsSlider() {
   return (
     <Swiper
       className={styles.mySwiper}
@@ -30,6 +30,12 @@ function DashboardCoinsSlider() {
         disableOnInteraction: true,
       }}
       modules={[Autoplay]}
+      onSlideChange={(swiper) => {
+        if (swiper.activeIndex === swiper.slides.length - 3) {
+          swiper.slideTo(0);
+          swiper.autoplay.start();
+        }
+      }}
     >
       {result.map((coin, idx) => (
         <SwiperSlide
@@ -42,5 +48,3 @@ function DashboardCoinsSlider() {
     </Swiper>
   );
 }
-
-export default DashboardCoinsSlider;

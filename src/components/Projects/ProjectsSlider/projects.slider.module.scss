@@ -18,7 +18,10 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 10px;
-    margin-bottom: 100px;
+    margin-bottom: variables.$margin-lg;
+    &:last-child {
+      margin-bottom: 0;
+    }
     .image {
       width: auto;
       height: auto;

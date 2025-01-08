@@ -1,7 +1,7 @@
 import { useSlideHover } from '@/hooks/useSlideHover';
+import GitHubIcon from '@mui/icons-material/GitHub';
 import { Button } from '@mui/material';
 import Image from 'next/image';
-import { FaGithub } from 'react-icons/fa';
 import styles from './project.slide.module.scss';
 import { IProjectData } from './projects.data';
 
@@ -19,7 +19,7 @@ function ProjectSlide({ project }: Readonly<Props>) {
           alt={`project-${project.id}-img`}
           width={300}
           height={300}
-          priority
+          {...(project.id === 0 ? { priority: true } : { loading: 'lazy' })}
         />
       </div>
       <div className={styles.buttons}>
@@ -34,7 +34,7 @@ function ProjectSlide({ project }: Readonly<Props>) {
             target='_blank'
             aria-label='Открыть Github репозиторий проекта'
           >
-            <FaGithub />
+            <GitHubIcon />
           </a>
         </div>
       </div>

@@ -1,7 +1,7 @@
 'use client';
+import GitHubIcon from '@mui/icons-material/GitHub';
 import { Button } from '@mui/material';
 import Image from 'next/image';
-import { FaGithub } from 'react-icons/fa';
 import { useMediaQuery } from 'react-responsive';
 import { Autoplay, EffectCoverflow, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -48,9 +48,10 @@ function ProjectsSlider() {
             <Image
               className={styles.image}
               src={project.img}
-              alt='project-img'
+              alt={`project-${project.id}-img`}
               width={250}
               height={250}
+              {...(project.id === 0 ? { priority: true } : { loading: 'lazy' })}
             />
             <div>
               <div className={styles.title}>{project.title}</div>
@@ -69,7 +70,7 @@ function ProjectsSlider() {
                     target='_blank'
                     aria-label='Открыть Github репозиторий проекта'
                   >
-                    <FaGithub />
+                    <GitHubIcon />
                   </a>
                 </div>
               </div>

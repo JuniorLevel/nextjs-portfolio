@@ -1,11 +1,11 @@
 'use client';
 
+import { SvgIconComponent } from '@mui/icons-material';
 import { Tooltip } from '@mui/material';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import React from 'react';
 import styles from './sidebar.nav.link.module.scss';
-import { SvgIconComponent } from '@mui/icons-material';
-import { usePathname } from 'next/navigation';
 
 type Props = {
   title: string;

@@ -1,9 +1,9 @@
-import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import ContactMailOutlinedIcon from '@mui/icons-material/ContactMailOutlined';
-import BadgeOutlinedIcon from '@mui/icons-material/BadgeOutlined';
-import StorageOutlinedIcon from '@mui/icons-material/StorageOutlined';
 import { appRoutes } from '@/config/routes.config';
 import { SvgIconComponent } from '@mui/icons-material';
+import BadgeOutlinedIcon from '@mui/icons-material/BadgeOutlined';
+import ContactMailOutlinedIcon from '@mui/icons-material/ContactMailOutlined';
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import StorageOutlinedIcon from '@mui/icons-material/StorageOutlined';
 
 export interface ISidebarNavItem {
   id: number;
