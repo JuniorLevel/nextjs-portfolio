@@ -13,6 +13,7 @@ export default function DashboardCoinsExchangesItem({ item }: Props) {
           alt={`icon-${item.name}`}
           width={60}
           height={60}
+          loading='lazy'
         />
       </Link>
       <div>{item.name}</div>

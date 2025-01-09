@@ -3,10 +3,15 @@ import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import { coins } from '../../../api/fake.data';
 import styles from './dashboard.coins.table.module.scss';
 
-type Props = {};
+type Props = {
+  data: { result: any[] };
+};
 
-function DashboardCoinsTable({}: Props) {
-  const { result } = coins;
+export default function DashboardCoinsTable({ data }: Readonly<Props>) {
+  const currentData =
+    Array.isArray(data?.result) && data.result.length
+      ? data.result
+      : coins.result;
 
   return (
     <div className={styles.coinsTable}>
@@ -19,7 +24,7 @@ function DashboardCoinsTable({}: Props) {
           </tr>
         </thead>
         <tbody>
-          {result.map((item) => (
+          {currentData.map((item) => (
             <tr key={item.name}>
               <td>
                 <span className={styles.symbol}>{item.symbol}</span>
@@ -36,11 +41,14 @@ function DashboardCoinsTable({}: Props) {
                 >
                   <span>{String(item.priceChange1d).replace('-', '')}%</span>
                   {Number(item.priceChange1d) < 0 ? (
-                    <ArrowDropDownIcon fontSize='large' sx={{ color: 'red' }} />
+                    <ArrowDropDownIcon
+                      className={styles.arrowDownIcon}
+                      fontSize='large'
+                    />
                   ) : (
                     <ArrowDropUpIcon
+                      className={styles.arrowUpIcon}
                       fontSize='large'
-                      sx={{ color: '#17ffc1' }}
                     />
                   )}
                 </div>
@@ -52,5 +60,3 @@ function DashboardCoinsTable({}: Props) {
     </div>
   );
 }
-
-export default DashboardCoinsTable;

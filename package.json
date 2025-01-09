@@ -27,12 +27,13 @@
     "react-toastify": "^11.0.2",
     "recharts": "^2.15.0",
     "swiper": "^11.2.0",
+    "swr": "^2.3.0",
     "yup": "^1.6.1"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^15.1.4",
     "@types/node": "^22.10.5",
-    "@types/react": "^19.0.3",
+    "@types/react": "^19.0.4",
     "@types/react-dom": "^19.0.2",
     "eslint": "^8.57.1",
     "eslint-config-next": "15.1.4",
@@ -40,6 +41,6 @@
     "prettier": "^3.4.2",
     "sass": "^1.83.1",
     "scss-reset": "^1.4.6",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.3"
   }
 }

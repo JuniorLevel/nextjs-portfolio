@@ -1,12 +1,12 @@
 'use client';
 
 import { coinsPriceMonthHistory } from '@/api/fake.data';
-import { DARK_COLORS_CHART, LIGHT_COLORS_CHART } from '@/config/colors.config';
 import { ArrowCircleDown } from '@mui/icons-material';
 import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
 import SyncAltIcon from '@mui/icons-material/SyncAlt';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import { Line, LineChart, ResponsiveContainer, Tooltip, YAxis } from 'recharts';
+import useSWR from 'swr';
 import styles from './dashboard.coin.module.scss';
 
 type Props = {
@@ -14,37 +14,37 @@ type Props = {
   coinIndex: number;
 };
 
-const CustomTooltip = ({
-  active,
-  payload,
-}: {
-  active: boolean;
-  payload: any;
-}) => {
-  if (active && payload?.length) {
-    return (
-      <div className={styles.tooltip}>
-        <p>
-          Дата: {new Date(payload[0].payload[0] * 1000).toLocaleDateString()}
-        </p>
-        <p>Цена: {payload[0].value.toFixed(5)}$</p>
-      </div>
-    );
-  }
+const getCoinsData = async (url: string) => {
+  const options: any = {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      'X-API-KEY': process.env.NEXT_PUBLIC_COINSTATS_API_KEY,
+    },
+  };
+
+  try {
+    const response = await fetch(url, options);
+    const result = await response.json();
+    return result;
+  } catch (error) {}
 };
 
-const getThemeColors = () => {
-  return document.body.getAttribute('data-app-theme') === 'dark'
-    ? DARK_COLORS_CHART
-    : LIGHT_COLORS_CHART;
-};
+const DashboardCoinLineChart = dynamic(
+  () => import('./DashboardCoinLineChart/DashboardCoinLineChart'),
+  { ssr: false }
+);
 
-function DashboardCoin({ coin, coinIndex }: Readonly<Props>) {
-  const filteredData =
-    coinsPriceMonthHistory.find((item) => item.id === coin.id)?.history ?? [];
-  const themeColors = getThemeColors();
-  const chartStrokeColor1 = themeColors.chartColor1;
-  const chartStrokeColor2 = themeColors.chartColor2;
+export default function DashboardCoin({ coin, coinIndex }: Readonly<Props>) {
+  const { data } = useSWR(
+    `https://openapiv1.coinstats.app/coins/${coin.id}/charts?period=1m`,
+    getCoinsData
+  );
+
+  const currentData =
+    Array.isArray(data) && data.length
+      ? data
+      : coinsPriceMonthHistory.find((item) => item.id === coin.id)?.history;
 
   return (
     <div className={styles.coin}>
@@ -54,6 +54,7 @@ function DashboardCoin({ coin, coinIndex }: Readonly<Props>) {
           alt={`coin-${coin.symbol}`}
           width={60}
           height={60}
+          loading='lazy'
         />
       </div>
       <div className={styles.coinData}>
@@ -81,37 +82,7 @@ function DashboardCoin({ coin, coinIndex }: Readonly<Props>) {
         </div>
         <div>{Number(coin.price).toFixed(5)}$</div>
       </div>
-      <div className={styles.chart}>
-        <ResponsiveContainer
-          width='100%'
-          height={110}
-          initialDimension={{ width: 380, height: 110 }}
-        >
-          <LineChart
-            data={filteredData}
-            margin={{
-              top: 0,
-              right: 20,
-              left: 20,
-              bottom: 10,
-            }}
-          >
-            <YAxis domain={['auto', 'auto']} hide />
-            <Tooltip content={<CustomTooltip active payload />} />
-            <Line
-              type='monotone'
-              dataKey='1'
-              stroke={
-                coinIndex % 2 !== 0 ? chartStrokeColor1 : chartStrokeColor2
-              }
-              strokeWidth={2}
-              dot={false}
-            />
-          </LineChart>
-        </ResponsiveContainer>
-      </div>
+      <DashboardCoinLineChart currentData={currentData} coinIndex={coinIndex} />
     </div>
   );
 }
-
-export default DashboardCoin;

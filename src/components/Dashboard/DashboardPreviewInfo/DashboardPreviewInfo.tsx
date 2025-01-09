@@ -1,8 +1,6 @@
 import styles from './dashboard.preview.info.module.scss';
 
-type Props = {};
-
-function DashboardPreviewInfo({}: Props) {
+function DashboardPreviewInfo() {
   return (
     <div className={styles.preview}>
       <h2>

@@ -1,9 +1,7 @@
 import { Skeleton } from '@mui/material';
 import styles from './dashboard.coin.skeleton.module.scss';
 
-type Props = {};
-
-export default function DashboardCoinSkeleton({}: Props) {
+export default function DashboardCoinSkeleton() {
   return (
     <Skeleton
       className={styles.skeleton}

@@ -10,7 +10,7 @@ export default function AboutImageBlock() {
           alt='profile'
           width={250}
           height={250}
-          priority
+          loading='lazy'
         />
       </div>
       <p>Frontend Developer 🧑‍💻</p>

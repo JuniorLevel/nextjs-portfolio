@@ -17,7 +17,7 @@ export default function DrawerSidebar() {
     return () => {
       document.removeEventListener('click', handleCloseSidebar, true);
     };
-  }, [setIsOpenSidebarMenu]);
+  }, [handleCloseSidebar, setIsOpenSidebarMenu]);
 
   return (
     <Drawer

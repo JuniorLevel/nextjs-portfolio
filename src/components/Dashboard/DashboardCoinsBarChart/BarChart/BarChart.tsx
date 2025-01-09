@@ -1,4 +1,7 @@
-import { DARK_COLORS_CHART, LIGHT_COLORS_CHART } from '@/config/colors.config';
+'use client';
+
+import { getCurrentLineChartColor } from '@/utils/getCurrentLineChartColor';
+import dynamic from 'next/dynamic';
 import {
   Bar,
   BarChart as BrChart,
@@ -11,29 +14,16 @@ import {
 import { coins } from '../../../../api/fake.data';
 import styles from './bar.chart.module.scss';
 
-type Props = {};
-
-const { result } = coins;
-
-const CustomTooltip = ({
-  active,
-  payload,
-}: {
-  active: boolean;
-  payload: any;
-}) => {
-  if (active && payload && payload.length) {
-    return (
-      <div className={styles.tooltip}>
-        <p>Название валюты: {payload[0].payload.name}</p>
-        <p>Оценка рыночной капитализации: {payload[0].value}$</p>
-        <p>Оценка рыночной капитализации: {payload[1].value}$</p>
-      </div>
-    );
-  }
+type Props = {
+  data: { result: any[] };
 };
 
-function BarChart({}: Props) {
+const CustomTooltip = dynamic(() => import('./CustomTooltip/CustomTooltip'), {
+  ssr: false,
+});
+
+export default function BarChart({ data }: Readonly<Props>) {
+  const finalData = data?.result ? data.result : coins.result;
   return (
     <ResponsiveContainer
       width='100%'
@@ -42,7 +32,7 @@ function BarChart({}: Props) {
     >
       <BrChart
         className={styles.barChart}
-        data={result}
+        data={finalData}
         margin={{
           top: -1250,
           left: 20,
@@ -54,26 +44,16 @@ function BarChart({}: Props) {
         <Bar
           dataKey='volume'
           name='Объём торгов'
-          fill={
-            document.body.getAttribute('data-app-theme') === 'dark'
-              ? `${DARK_COLORS_CHART.chartColor2}`
-              : `${LIGHT_COLORS_CHART.chartColor2}`
-          }
+          fill={getCurrentLineChartColor(2)}
           activeBar={<Rectangle fill='pink' stroke='blue' />}
         />
         <Bar
           dataKey='marketCap'
           name='Рыночная капитализация'
-          fill={
-            document.body.getAttribute('data-app-theme') === 'dark'
-              ? `${DARK_COLORS_CHART.chartColor1}`
-              : `${LIGHT_COLORS_CHART.chartColor1}`
-          }
+          fill={getCurrentLineChartColor(1)}
           activeBar={<Rectangle fill='gold' stroke='purple' />}
         />
       </BrChart>
     </ResponsiveContainer>
   );
 }
-
-export default BarChart;

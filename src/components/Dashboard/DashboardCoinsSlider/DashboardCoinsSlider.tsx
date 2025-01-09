@@ -12,9 +12,12 @@ const DashboardCoin = dynamic(() => import('./DashboardCoin/DashboardCoin'), {
   ssr: false,
 });
 
-const { result } = coins;
+type Props = {
+  data: { result: any[] };
+};
 
-export default function DashboardCoinsSlider() {
+export default function DashboardCoinsSlider({ data }: Readonly<Props>) {
+  const currentData = data?.result ? data.result : coins.result;
   return (
     <Swiper
       className={styles.mySwiper}
@@ -37,7 +40,7 @@ export default function DashboardCoinsSlider() {
         }
       }}
     >
-      {result.map((coin, idx) => (
+      {currentData.map((coin, idx) => (
         <SwiperSlide
           key={coin.name}
           style={{ maxWidth: '455px', marginRight: '16px' }}

@@ -1,33 +1,26 @@
 import { coins } from '@/api/fake.data';
-import { DARK_COLORS_CHART, LIGHT_COLORS_CHART } from '@/config/colors.config';
+import { getCurrentLineChartColor } from '@/utils/getCurrentLineChartColor';
+import dynamic from 'next/dynamic';
 import { Line, LineChart, ResponsiveContainer, Tooltip, XAxis } from 'recharts';
-import styles from './line.chart.module.scss';
 
-type Props = {};
+const CustomTooltip = dynamic(() => import('./CustomTooltip/CustomTooltip'), {
+  ssr: false,
+});
 
-const { result } = coins;
+type Props = { data: { result: any[] } };
 
-const CustomTooltip = ({
-  active,
-  payload,
-}: {
-  active: boolean;
-  payload: any;
-}) => {
-  if (active && payload && payload.length) {
-    return (
-      <div className={styles.tooltip}>
-        <p>Название валюты: {payload[0].payload.name}</p>
-        <p>Оценка ликвидности: {payload[0].value}$</p>
-        <p>Оценка волатильности: {payload[1].value}$</p>
-        <p>Показатель рисков: {payload[2].value}$</p>
-        <p>Оценка рыночной капитализации: {payload[3].value}$</p>
-      </div>
+export default function LinesChart({ data }: Readonly<Props>) {
+  const hasAllScores =
+    data?.result &&
+    !!(
+      data?.result[0]?.liquidityScore &&
+      data?.result[0]?.volatilityScore &&
+      data?.result[0]?.riskScore &&
+      data?.result[0]?.marketCapScore
     );
-  }
-};
 
-function LinesChart({}: Props) {
+  const currentData = hasAllScores ? data.result : coins.result;
+
   return (
     <ResponsiveContainer
       width='100%'
@@ -35,7 +28,7 @@ function LinesChart({}: Props) {
       initialDimension={{ width: 890, height: 185 }}
     >
       <LineChart
-        data={result}
+        data={currentData}
         margin={{
           top: 5,
           bottom: 5,
@@ -43,53 +36,22 @@ function LinesChart({}: Props) {
       >
         <Tooltip content={<CustomTooltip active payload />} />
         <XAxis dataKey='name' />
-        <Line
-          type='monotone'
-          dataKey='liquidityScore'
-          stroke={
-            document.body.getAttribute('data-app-theme') === 'dark'
-              ? `${DARK_COLORS_CHART.chartColor1}`
-              : `${LIGHT_COLORS_CHART.chartColor1}`
-          }
-          strokeWidth={2}
-          dot={false}
-        />
-        <Line
-          type='monotone'
-          dataKey='volatilityScore'
-          stroke={
-            document.body.getAttribute('data-app-theme') === 'dark'
-              ? `${DARK_COLORS_CHART.chartColor2}`
-              : `${LIGHT_COLORS_CHART.chartColor2}`
-          }
-          strokeWidth={2}
-          dot={false}
-        />
-        <Line
-          type='monotone'
-          dataKey='riskScore'
-          stroke={
-            document.body.getAttribute('data-app-theme') === 'dark'
-              ? `${DARK_COLORS_CHART.chartColor3}`
-              : `${LIGHT_COLORS_CHART.chartColor3}`
-          }
-          strokeWidth={2}
-          dot={false}
-        />
-        <Line
-          type='monotone'
-          dataKey='marketCapScore'
-          stroke={
-            document.body.getAttribute('data-app-theme') === 'dark'
-              ? `${DARK_COLORS_CHART.chartColor4}`
-              : `${LIGHT_COLORS_CHART.chartColor4}`
-          }
-          strokeWidth={2}
-          dot={false}
-        />
+        {[
+          'liquidityScore',
+          'volatilityScore',
+          'riskScore',
+          'marketCapScore',
+        ].map((item, idx) => (
+          <Line
+            key={idx}
+            type='monotone'
+            dataKey={item}
+            stroke={getCurrentLineChartColor(idx + 1)}
+            strokeWidth={2}
+            dot={false}
+          />
+        ))}
       </LineChart>
     </ResponsiveContainer>
   );
 }
-
-export default LinesChart;
