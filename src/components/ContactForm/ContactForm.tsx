@@ -1,12 +1,12 @@
 'use client';
 
-import React, { useRef, useState } from 'react';
-import styles from './contact.form.module.scss';
+import emailjs from '@emailjs/browser';
 import { Button, Input, TextareaAutosize } from '@mui/material';
 import { ErrorMessage, Field, Formik, FormikHelpers } from 'formik';
-import emailjs from '@emailjs/browser';
-import * as Yup from 'yup';
+import { useRef, useState } from 'react';
 import { toast } from 'react-toastify';
+import * as Yup from 'yup';
+import styles from './contact.form.module.scss';
 
 export default function ContactForm() {
   const [disabled, setDisabled] = useState(false);
@@ -46,7 +46,6 @@ export default function ContactForm() {
           position: 'top-center',
           className: styles.toast,
           render() {
-            setDisabled(true);
             return 'Отправка формы';
           },
         },
@@ -79,8 +78,9 @@ export default function ContactForm() {
       </h2>
       <Formik
         initialValues={{ from_name: '', from_email: '', message: '' }}
-        onSubmit={(values, actions) => {
+        onSubmit={(_, actions) => {
           sendEmail(actions);
+          setDisabled(true);
         }}
         validationSchema={validationSchema}
       >

@@ -1,23 +1,25 @@
 'use client';
 
 import { coins } from '@/api/fake.data';
+import { getCoinsData } from '@/app/actions';
 import dynamic from 'next/dynamic';
 import { Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import DashboardCoinSkeleton from './DashboardCoin/DashboardCoinSkeleton/DashboardCoinSkeleton';
+import useSWR from 'swr';
 import styles from './dashboard.coins.slider.module.scss';
+import DashboardCoinSkeleton from './DashboardCoin/DashboardCoinSkeleton/DashboardCoinSkeleton';
 
 const DashboardCoin = dynamic(() => import('./DashboardCoin/DashboardCoin'), {
   loading: () => <DashboardCoinSkeleton />,
   ssr: false,
 });
 
-type Props = {
-  data: { result: any[] };
-};
-
-export default function DashboardCoinsSlider({ data }: Readonly<Props>) {
-  const currentData = data?.result ? data.result : coins.result;
+export default function DashboardCoinsSlider() {
+  const { data } = useSWR(
+    'https://openapiv1.coinstats.app/coins',
+    getCoinsData
+  );
+  const currentData = data?.result ?? coins.result;
   return (
     <Swiper
       className={styles.mySwiper}
@@ -40,7 +42,7 @@ export default function DashboardCoinsSlider({ data }: Readonly<Props>) {
         }
       }}
     >
-      {currentData.map((coin, idx) => (
+      {currentData.map((coin: any, idx: number) => (
         <SwiperSlide
           key={coin.name}
           style={{ maxWidth: '455px', marginRight: '16px' }}

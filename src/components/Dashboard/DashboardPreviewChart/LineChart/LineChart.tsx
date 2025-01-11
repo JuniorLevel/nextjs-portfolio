@@ -1,11 +1,7 @@
 import { coins } from '@/api/fake.data';
 import { getCurrentLineChartColor } from '@/utils/getCurrentLineChartColor';
-import dynamic from 'next/dynamic';
 import { Line, LineChart, ResponsiveContainer, Tooltip, XAxis } from 'recharts';
-
-const CustomTooltip = dynamic(() => import('./CustomTooltip/CustomTooltip'), {
-  ssr: false,
-});
+import CustomTooltip from './CustomTooltip/CustomTooltip';
 
 type Props = { data: { result: any[] } };
 

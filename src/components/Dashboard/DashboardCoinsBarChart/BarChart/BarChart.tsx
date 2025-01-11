@@ -1,7 +1,5 @@
-'use client';
-
+import { coins } from '@/api/fake.data';
 import { getCurrentLineChartColor } from '@/utils/getCurrentLineChartColor';
-import dynamic from 'next/dynamic';
 import {
   Bar,
   BarChart as BrChart,
@@ -11,16 +9,12 @@ import {
   Tooltip,
   XAxis,
 } from 'recharts';
-import { coins } from '../../../../api/fake.data';
 import styles from './bar.chart.module.scss';
+import CustomTooltip from './CustomTooltip/CustomTooltip';
 
 type Props = {
   data: { result: any[] };
 };
-
-const CustomTooltip = dynamic(() => import('./CustomTooltip/CustomTooltip'), {
-  ssr: false,
-});
 
 export default function BarChart({ data }: Readonly<Props>) {
   const finalData = data?.result ? data.result : coins.result;

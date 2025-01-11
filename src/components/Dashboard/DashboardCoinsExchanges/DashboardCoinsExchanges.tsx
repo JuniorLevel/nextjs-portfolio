@@ -1,30 +1,16 @@
+'use client';
+
 import { listOfExchanges } from '@/api/fake.data';
+import { getExchangesList } from '@/app/actions';
 import { useCalcPaginationPages } from '@/hooks/useCalcPaginationPages';
-import { Pagination } from '@mui/material';
 import useSWR from 'swr';
-import DashboardCoinsExchangesItem from './DashboardCoinsExchangesItem/DashboardCoinsExchangesItem';
 import styles from './dashboard.coins.exchanges.module.scss';
-
-const getCoinsData = async (url: string) => {
-  const options: any = {
-    method: 'GET',
-    headers: {
-      accept: 'application/json',
-      'X-API-KEY': process.env.NEXT_PUBLIC_COINSTATS_API_KEY,
-    },
-  };
-
-  try {
-    const response = await fetch(url, options);
-    const result = await response.json();
-    return result;
-  } catch (error) {}
-};
+import DashboardCoinsExchangesList from './DashboardCoinsExchangesList/DashboardCoinsExchangesList';
 
 export default function DashboardCoinsExchanges() {
   const { data } = useSWR(
     'https://openapiv1.coinstats.app/tickers/exchanges',
-    getCoinsData
+    getExchangesList
   );
 
   const exchangesWithIcons = () => {
@@ -49,16 +35,10 @@ export default function DashboardCoinsExchanges() {
       <h3>
         Доступные биржи для <br /> сделок
       </h3>
-      <div className={styles.exchangesList}>
-        {currentItems.map((item) => (
-          <DashboardCoinsExchangesItem key={item.id} item={item} />
-        ))}
-      </div>
-      <Pagination
-        hideNextButton
-        hidePrevButton
-        count={totalPages}
-        onChange={handleChange}
+      <DashboardCoinsExchangesList
+        currentItems={currentItems}
+        totalPages={totalPages}
+        handleChange={handleChange}
       />
     </div>
   );

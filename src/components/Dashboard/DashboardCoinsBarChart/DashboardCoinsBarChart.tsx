@@ -1,19 +1,21 @@
 'use client';
 
+import { getCoinsData } from '@/app/actions';
 import dynamic from 'next/dynamic';
+import useSWR from 'swr';
 import Loader from 'ui/Loader/Loader';
 import styles from './dashboard.coins.bar.chart.module.scss';
 
-type Props = {
-  data: { result: any[] };
-};
-
 const BarChart = dynamic(() => import('./BarChart/BarChart'), {
-  loading: () => <Loader height={150} />,
+  loading: () => <Loader height={155} />,
   ssr: false,
 });
 
-export default function DashboardCoinsBarChart({ data }: Readonly<Props>) {
+export default function DashboardCoinsBarChart() {
+  const { data } = useSWR(
+    'https://openapiv1.coinstats.app/coins',
+    getCoinsData
+  );
   return (
     <div className={styles.barChartBlock}>
       <h3>

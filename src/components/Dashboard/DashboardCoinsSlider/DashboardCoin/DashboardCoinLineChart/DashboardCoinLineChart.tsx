@@ -1,15 +1,9 @@
-'use client';
-
 import { getCurrentLineChartColor } from '@/utils/getCurrentLineChartColor';
-import dynamic from 'next/dynamic';
 import { Line, LineChart, ResponsiveContainer, Tooltip, YAxis } from 'recharts';
+import CustomTooltip from '../CustomTooltip/CustomTooltip';
 import styles from '../dashboard.coin.module.scss';
 
 type Props = { currentData: any[] | undefined; coinIndex: number };
-
-const CustomTooltip = dynamic(() => import('../CustomTooltip/CustomTooltip'), {
-  ssr: false,
-});
 
 export default function DashboardCoinLineChart({
   currentData,

@@ -1,6 +1,8 @@
 'use client';
 
+import { getCoinsData } from '@/app/actions';
 import dynamic from 'next/dynamic';
+import useSWR from 'swr';
 import Loader from 'ui/Loader/Loader';
 import styles from './dashboard.preview.chart.module.scss';
 
@@ -9,9 +11,11 @@ const LineChart = dynamic(() => import('./LineChart/LineChart'), {
   ssr: false,
 });
 
-type Props = { data: { result: any[] } };
-
-export default function DashboardPreviewChart({ data }: Readonly<Props>) {
+export default function DashboardPreviewChart() {
+  const { data } = useSWR(
+    'https://openapiv1.coinstats.app/coins',
+    getCoinsData
+  );
   return (
     <div className={styles.previewChart}>
       <h3>

@@ -1,17 +1,20 @@
+'use client';
+
+import { getCoinsData } from '@/app/actions';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
-import { coins } from '../../../api/fake.data';
+import useSWR from 'swr';
 import styles from './dashboard.coins.table.module.scss';
 
-type Props = {
-  data: { result: any[] };
-};
-
-export default function DashboardCoinsTable({ data }: Readonly<Props>) {
-  const currentData =
-    Array.isArray(data?.result) && data.result.length
-      ? data.result
-      : coins.result;
+export default function DashboardCoinsTable() {
+  const { data } = useSWR(
+    'https://openapiv1.coinstats.app/coins',
+    getCoinsData
+  );
+  // const currentData =
+  //   Array.isArray(data?.result) && data.result.length
+  //     ? data.result
+  //     : coins.result;
 
   return (
     <div className={styles.coinsTable}>
@@ -24,7 +27,7 @@ export default function DashboardCoinsTable({ data }: Readonly<Props>) {
           </tr>
         </thead>
         <tbody>
-          {currentData.map((item) => (
+          {data?.result.map((item: any) => (
             <tr key={item.name}>
               <td>
                 <span className={styles.symbol}>{item.symbol}</span>
