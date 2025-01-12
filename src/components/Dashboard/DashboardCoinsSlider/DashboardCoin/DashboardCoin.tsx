@@ -1,5 +1,5 @@
 import { coinsPriceMonthHistory } from '@/api/fake.data';
-import { getCoinHistoryData } from '@/app/actions';
+import { getAppData } from '@/app/actions';
 import { ArrowCircleDown } from '@mui/icons-material';
 import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
 import SyncAltIcon from '@mui/icons-material/SyncAlt';
@@ -16,7 +16,7 @@ type Props = {
 export default function DashboardCoin({ coin, coinIndex }: Readonly<Props>) {
   const { data } = useSWR(
     `https://openapiv1.coinstats.app/coins/${coin.id}/charts?period=1m`,
-    getCoinHistoryData
+    getAppData
   );
 
   const currentData =

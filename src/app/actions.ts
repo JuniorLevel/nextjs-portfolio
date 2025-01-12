@@ -1,6 +1,9 @@
 'use server';
 
+import { RequestOptions } from 'interfaces/interfaces';
 import { cookies } from 'next/headers';
+
+const cache: Record<string, any> = {};
 
 export async function updateCookiesValue(data: string) {
   const cookieStore = await cookies();
@@ -12,50 +15,26 @@ export async function getCookiesValue(key: string) {
   return cookieStore.get(key);
 }
 
-export async function getCoinsData(url: string) {
-  const options: any = {
+async function fetchApi(url: string) {
+  const options = {
     method: 'GET',
     headers: {
       accept: 'application/json',
       'X-API-KEY': process.env.NEXT_PUBLIC_COINSTATS_API_KEY,
     },
-  };
+  } as RequestOptions;
 
-  try {
-    const response = await fetch(url, options);
-    const result = await response.json();
-    return result;
-  } catch (error) {}
+  const response = await fetch(url, options);
+  const result = await response.json();
+  return result;
 }
 
-export async function getCoinHistoryData(url: string) {
-  const options: any = {
-    method: 'GET',
-    headers: {
-      accept: 'application/json',
-      'X-API-KEY': process.env.NEXT_PUBLIC_COINSTATS_API_KEY,
-    },
-  };
+export async function getAppData(url: string) {
+  if (cache[url]) {
+    return cache[url];
+  }
 
-  try {
-    const response = await fetch(url, options);
-    const result = await response.json();
-    return result;
-  } catch (error) {}
-}
-
-export async function getExchangesList(url: string) {
-  const options: any = {
-    method: 'GET',
-    headers: {
-      accept: 'application/json',
-      'X-API-KEY': process.env.NEXT_PUBLIC_COINSTATS_API_KEY,
-    },
-  };
-
-  try {
-    const response = await fetch(url, options);
-    const result = await response.json();
-    return result;
-  } catch (error) {}
+  const result = await fetchApi(url);
+  cache[url] = result;
+  return result;
 }

@@ -1,7 +1,7 @@
 'use client';
 
 import { listOfExchanges } from '@/api/fake.data';
-import { getExchangesList } from '@/app/actions';
+import { getAppData } from '@/app/actions';
 import { useCalcPaginationPages } from '@/hooks/useCalcPaginationPages';
 import useSWR from 'swr';
 import styles from './dashboard.coins.exchanges.module.scss';
@@ -10,7 +10,7 @@ import DashboardCoinsExchangesList from './DashboardCoinsExchangesList/Dashboard
 export default function DashboardCoinsExchanges() {
   const { data } = useSWR(
     'https://openapiv1.coinstats.app/tickers/exchanges',
-    getExchangesList
+    getAppData
   );
 
   const exchangesWithIcons = () => {

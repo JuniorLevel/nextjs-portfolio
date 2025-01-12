@@ -1,6 +1,6 @@
 'use client';
 
-import { getCoinsData } from '@/app/actions';
+import { getAppData } from '@/app/actions';
 import dynamic from 'next/dynamic';
 import useSWR from 'swr';
 import Loader from 'ui/Loader/Loader';
@@ -12,10 +12,7 @@ const BarChart = dynamic(() => import('./BarChart/BarChart'), {
 });
 
 export default function DashboardCoinsBarChart() {
-  const { data } = useSWR(
-    'https://openapiv1.coinstats.app/coins',
-    getCoinsData
-  );
+  const { data } = useSWR('https://openapiv1.coinstats.app/coins', getAppData);
   return (
     <div className={styles.barChartBlock}>
       <h3>

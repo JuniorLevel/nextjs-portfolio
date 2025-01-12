@@ -7,7 +7,7 @@ export default function Logo() {
   return (
     <div className={styles.logo}>
       <Link href={appRoutes.DASHBOARD}>
-        <Image src='/logo.svg' alt='logo' width={50} height={50} priority />
+        <Image src='/logo.svg' alt='logo' width={50} height={50} />
       </Link>
     </div>
   );

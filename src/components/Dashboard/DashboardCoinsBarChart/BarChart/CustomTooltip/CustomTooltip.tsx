@@ -11,7 +11,7 @@ export default function CustomTooltip({
     return (
       <div className={styles.tooltip}>
         <p>Название валюты: {payload[0].payload.name}</p>
-        <p>Оценка рыночной капитализации: {payload[0].value}$</p>
+        <p>Объём торгов: {payload[0].value}$</p>
         <p>Оценка рыночной капитализации: {payload[1].value}$</p>
       </div>
     );

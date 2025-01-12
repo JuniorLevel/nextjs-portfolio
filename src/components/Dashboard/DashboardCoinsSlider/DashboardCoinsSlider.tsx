@@ -1,7 +1,7 @@
 'use client';
 
 import { coins } from '@/api/fake.data';
-import { getCoinsData } from '@/app/actions';
+import { getAppData } from '@/app/actions';
 import dynamic from 'next/dynamic';
 import { Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -15,10 +15,7 @@ const DashboardCoin = dynamic(() => import('./DashboardCoin/DashboardCoin'), {
 });
 
 export default function DashboardCoinsSlider() {
-  const { data } = useSWR(
-    'https://openapiv1.coinstats.app/coins',
-    getCoinsData
-  );
+  const { data } = useSWR('https://openapiv1.coinstats.app/coins', getAppData);
   const currentData = data?.result ?? coins.result;
   return (
     <Swiper
