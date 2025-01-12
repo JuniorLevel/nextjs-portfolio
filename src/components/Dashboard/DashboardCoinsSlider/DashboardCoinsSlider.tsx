@@ -39,12 +39,12 @@ export default function DashboardCoinsSlider() {
         }
       }}
     >
-      {currentData.map((coin: any) => (
+      {currentData.map((coin: any, idx: number) => (
         <SwiperSlide
           key={coin.name}
           style={{ maxWidth: '455px', marginRight: '16px' }}
         >
-          <DashboardCoin coin={coin} />
+          <DashboardCoin coin={coin} coinIndex={idx} />
         </SwiperSlide>
       ))}
     </Swiper>

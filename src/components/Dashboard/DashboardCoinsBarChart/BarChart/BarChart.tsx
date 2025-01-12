@@ -1,5 +1,4 @@
 import { coins } from '@/api/fake.data';
-import { getCurrentLineChartColor } from '@/utils/getCurrentLineChartColor';
 import {
   Bar,
   BarChart as BrChart,
@@ -38,13 +37,13 @@ export default function BarChart({ data }: Readonly<Props>) {
         <Bar
           dataKey='volume'
           name='Объём торгов'
-          fill={getCurrentLineChartColor(2)}
+          fill='#bf24e3'
           activeBar={<Rectangle fill='pink' stroke='blue' />}
         />
         <Bar
           dataKey='marketCap'
           name='Рыночная капитализация'
-          fill={getCurrentLineChartColor(1)}
+          fill='#17ffc1'
           activeBar={<Rectangle fill='gold' stroke='purple' />}
         />
       </BrChart>

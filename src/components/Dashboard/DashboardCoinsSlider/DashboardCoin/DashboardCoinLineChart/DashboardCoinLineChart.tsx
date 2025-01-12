@@ -1,15 +1,13 @@
-import { getCurrentLineChartColor } from '@/utils/getCurrentLineChartColor';
 import { Line, LineChart, ResponsiveContainer, Tooltip, YAxis } from 'recharts';
 import CustomTooltip from '../CustomTooltip/CustomTooltip';
 import styles from '../dashboard.coin.module.scss';
 
-type Props = { currentData: any[] | undefined; coinPriceChange: number };
+type Props = { currentData: any[] | undefined; coinIndex: number };
 
 export default function DashboardCoinLineChart({
   currentData,
-  coinPriceChange,
+  coinIndex,
 }: Readonly<Props>) {
-  console.log(coinPriceChange);
   return (
     <div className={styles.chart}>
       <ResponsiveContainer
@@ -31,11 +29,7 @@ export default function DashboardCoinLineChart({
           <Line
             type='monotone'
             dataKey='1'
-            stroke={
-              coinPriceChange > 0
-                ? getCurrentLineChartColor(1)
-                : getCurrentLineChartColor(2)
-            }
+            stroke={coinIndex % 2 !== 0 ? '#17ffc1' : '#bf24e3'}
             strokeWidth={2}
             dot={false}
           />

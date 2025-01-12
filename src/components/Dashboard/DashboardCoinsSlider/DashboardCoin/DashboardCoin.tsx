@@ -10,9 +10,10 @@ import DashboardCoinLineChart from './DashboardCoinLineChart/DashboardCoinLineCh
 
 type Props = {
   coin: any;
+  coinIndex: number;
 };
 
-export default function DashboardCoin({ coin }: Readonly<Props>) {
+export default function DashboardCoin({ coin, coinIndex }: Readonly<Props>) {
   const { data } = useSWR(
     `https://openapiv1.coinstats.app/coins/${coin.id}/charts?period=1m`,
     getAppData
@@ -59,10 +60,7 @@ export default function DashboardCoin({ coin }: Readonly<Props>) {
         </div>
         <div>{Number(coin.price).toFixed(5)}$</div>
       </div>
-      <DashboardCoinLineChart
-        currentData={currentData}
-        coinPriceChange={coin.priceChange1h}
-      />
+      <DashboardCoinLineChart currentData={currentData} coinIndex={coinIndex} />
     </div>
   );
 }
