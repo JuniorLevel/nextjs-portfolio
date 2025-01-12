@@ -1,10 +1,6 @@
 @use '../../../../themes/variables.scss';
 @use '../../../../themes/mixins.scss';
 
-.tooltip {
-  @include mixins.tooltip;
-}
-
 .coin {
   position: relative;
   padding: variables.$padding-md;
@@ -59,29 +55,6 @@
   }
 }
 
-body[data-app-theme='light'] {
-  .coin {
-    background-color: variables.$light-dashboard-block-bg;
-    .coinData {
-      .panel {
-        .dynamic {
-          .percentDown {
-            color: variables.$light-percent-down-color;
-          }
-          .downIcon {
-            color: variables.$light-percent-down-color;
-          }
-          .percentUp {
-            color: variables.$light-percent-up-color;
-          }
-          .upIcon {
-            color: variables.$light-percent-up-color;
-          }
-        }
-        span {
-          color: purple;
-        }
-      }
-    }
-  }
+.tooltip {
+  @include mixins.tooltip;
 }
