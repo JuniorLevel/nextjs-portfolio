@@ -26,7 +26,7 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang='ru'>
-      <body className={roboto.className}>
+      <body className={roboto.className} data-app-theme='dark'>
         <ThemeProvider>
           <div className={styles.wrapper}>
             <div className={styles.sidebarWrapper}>
