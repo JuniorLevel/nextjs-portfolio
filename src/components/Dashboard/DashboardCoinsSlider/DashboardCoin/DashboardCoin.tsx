@@ -60,7 +60,10 @@ export default function DashboardCoin({ coin, coinIndex }: Readonly<Props>) {
         </div>
         <div>{Number(coin.price).toFixed(5)}$</div>
       </div>
-      <DashboardCoinLineChart currentData={currentData} coinIndex={coinIndex} />
+      <DashboardCoinLineChart
+        currentData={currentData}
+        coinPriceChange={coin.priceChange1h}
+      />
     </div>
   );
 }
