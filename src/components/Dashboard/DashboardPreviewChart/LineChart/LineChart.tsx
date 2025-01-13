@@ -1,5 +1,5 @@
 import { coins } from '@/api/fake.data';
-import { getCurrentLineChartColor } from '@/utils/getCurrentLineChartColor';
+import { DARK_COLORS_CHART } from '@/config/colors.config';
 import { Line, LineChart, ResponsiveContainer, Tooltip, XAxis } from 'recharts';
 import CustomTooltip from './CustomTooltip/CustomTooltip';
 
@@ -42,7 +42,7 @@ export default function LinesChart({ data }: Readonly<Props>) {
             key={idx}
             type='monotone'
             dataKey={item}
-            stroke={getCurrentLineChartColor(idx + 1)}
+            stroke={DARK_COLORS_CHART[idx + 1]}
             strokeWidth={2}
             dot={false}
           />

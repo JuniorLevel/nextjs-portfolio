@@ -1,7 +1,14 @@
 'use client';
 
-import { ThemeContext } from '@/context/ThemeProvider/ThemeProvider';
+import { updateCookiesValue } from '@/app/actions';
+import {
+  darkTheme,
+  lightTheme,
+  ThemeContext,
+} from '@/context/ThemeProvider/ThemeProvider';
 import { getCurrentHeaderInfo } from '@/utils/getCurrentHeaderInfo';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import { Oswald } from 'next/font/google';
 import { usePathname } from 'next/navigation';
 import { useContext } from 'react';
@@ -13,7 +20,8 @@ const oswald = Oswald({ subsets: ['latin'], weight: ['400'] });
 export default function Header() {
   const pathname = usePathname();
   const info = getCurrentHeaderInfo(pathname);
-  const { setIsOpenSidebarMenu } = useContext(ThemeContext);
+  const { userTheme, setUserTheme, setIsOpenSidebarMenu } =
+    useContext(ThemeContext);
 
   return (
     <header className={styles.header}>
@@ -21,7 +29,7 @@ export default function Header() {
         <h1 className={oswald.className}>{info?.text ?? ''}</h1>
       </div>
       <div className={styles.panel}>
-        {/* <button
+        <button
           aria-label='Switch current theme'
           className={styles.switchBtn}
           onClick={() => {
@@ -36,7 +44,7 @@ export default function Header() {
         >
           <WbSunnyIcon className={styles.darkThemeIcon} />
           <DarkModeIcon className={styles.lightThemeIcon} />
-        </button> */}
+        </button>
         <BurgerMenuButton onClick={() => setIsOpenSidebarMenu(true)} />
       </div>
     </header>

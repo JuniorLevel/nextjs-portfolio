@@ -1,4 +1,5 @@
 import { coins } from '@/api/fake.data';
+import { DARK_COLORS_CHART } from '@/config/colors.config';
 import {
   Bar,
   BarChart as BrChart,
@@ -37,13 +38,13 @@ export default function BarChart({ data }: Readonly<Props>) {
         <Bar
           dataKey='volume'
           name='Объём торгов'
-          fill='#bf24e3'
+          fill={DARK_COLORS_CHART[2]}
           activeBar={<Rectangle fill='pink' stroke='blue' />}
         />
         <Bar
           dataKey='marketCap'
           name='Рыночная капитализация'
-          fill='#17ffc1'
+          fill={DARK_COLORS_CHART[4]}
           activeBar={<Rectangle fill='gold' stroke='purple' />}
         />
       </BrChart>

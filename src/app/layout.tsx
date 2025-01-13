@@ -3,6 +3,7 @@ import Header from '@/components/Header/Header';
 import Sidebar from '@/components/Sidebar/Sidebar';
 import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
+import { cookies } from 'next/headers';
 import React from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -24,9 +25,15 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieStore = await cookies();
+  const theme = cookieStore.get('theme');
+
   return (
     <html lang='ru'>
-      <body className={roboto.className} data-app-theme='dark'>
+      <body
+        className={roboto.className}
+        data-app-theme={theme?.value ?? 'dark'}
+      >
         <ThemeProvider>
           <div className={styles.wrapper}>
             <div className={styles.sidebarWrapper}>

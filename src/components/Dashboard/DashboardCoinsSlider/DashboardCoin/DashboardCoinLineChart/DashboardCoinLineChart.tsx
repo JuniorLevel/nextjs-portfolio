@@ -1,3 +1,4 @@
+import { DARK_COLORS_CHART } from '@/config/colors.config';
 import { Line, LineChart, ResponsiveContainer, Tooltip, YAxis } from 'recharts';
 import CustomTooltip from '../CustomTooltip/CustomTooltip';
 import styles from '../dashboard.coin.module.scss';
@@ -29,7 +30,9 @@ export default function DashboardCoinLineChart({
           <Line
             type='monotone'
             dataKey='1'
-            stroke={coinIndex % 2 !== 0 ? '#17ffc1' : '#bf24e3'}
+            stroke={
+              coinIndex % 2 !== 0 ? DARK_COLORS_CHART[4] : DARK_COLORS_CHART[2]
+            }
             strokeWidth={2}
             dot={false}
           />
