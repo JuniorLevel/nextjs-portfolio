@@ -10,28 +10,6 @@ export interface IProjectData {
 
 export const projectsData: IProjectData[] = [
   {
-    id: 0,
-    title: 'React df-boilerplate',
-    description:
-      'Df-boilerplate проект с принципиальным дизайном, реализованным при помощи UI библиотеки Ant Design',
-    labels: [
-      'ReactJS',
-      'TypeScript',
-      'Styled components',
-      'React Context',
-      'Tanstack Router',
-      'Styleguidist',
-      'React Testing Library',
-      'Formik',
-      'Ant Design',
-      'ESlint 9',
-      'Husky',
-    ],
-    img: '/projects/df-boilerplate.png',
-    url: 'https://juniorlevel.github.io/df_boilerplate-main/styleguide/',
-    repositoryUrl: 'https://github.com/JuniorLevel/df_boilerplate-main',
-  },
-  {
     id: 1,
     title: 'Cloud App',
     description: 'Облачное хранилище',
@@ -51,6 +29,15 @@ export const projectsData: IProjectData[] = [
   },
   {
     id: 2,
+    title: 'Landing Prime Car',
+    description: 'Одностраничный сайт по продаже машин',
+    labels: ['HTML (BEM naming)', 'CSS', 'JavaScript'],
+    img: '/projects/prime-car.png',
+    url: 'https://boisterous-cranachan-8377fa.netlify.app/',
+    repositoryUrl: 'https://github.com/JuniorLevel/landing-prime-car',
+  },
+  {
+    id: 3,
     title: 'Qpick Store App E-commerce',
     description: 'Интернет магазин на основе API Platzi Fake Store',
     labels: ['ReactJS', 'Typescript', 'Redux Toolkit', 'React Router Dom'],
@@ -59,7 +46,7 @@ export const projectsData: IProjectData[] = [
     repositoryUrl: 'https://github.com/JuniorLevel/qpick-store-app',
   },
   {
-    id: 3,
+    id: 4,
     title: 'Qpick store telegram bot',
     description: 'Телеграм бот c мини веб приложением Qpick Store',
     labels: [
@@ -74,22 +61,26 @@ export const projectsData: IProjectData[] = [
     repositoryUrl: 'https://github.com/JuniorLevel/qpick-store-tg-web-app',
   },
   {
-    id: 4,
-    title: 'Landing Prime Car',
-    description: 'Одностраничный сайт по продаже машин',
-    labels: ['HTML (BEM naming)', 'CSS', 'JavaScript'],
-    img: '/projects/prime-car.png',
-    url: 'https://boisterous-cranachan-8377fa.netlify.app/',
-    repositoryUrl: 'https://github.com/JuniorLevel/landing-prime-car',
-  },
-  {
     id: 5,
-    title: 'Portfolio App 1.0',
-    description: 'React portfolio app',
-    labels: ['ReactJS', 'Typescript', 'Tailwind CSS', 'React Router Dom'],
-    img: '/projects/portfolio-app-1.0.png',
-    url: 'https://flourishing-twilight-f30fd2.netlify.app/',
-    repositoryUrl: 'https://github.com/JuniorLevel/portfolio-app',
+    title: 'React df-boilerplate',
+    description:
+      'Df-boilerplate проект с принципиальным дизайном, реализованным при помощи UI библиотеки Ant Design',
+    labels: [
+      'ReactJS',
+      'TypeScript',
+      'Styled components',
+      'React Context',
+      'Tanstack Router',
+      'Styleguidist',
+      'React Testing Library',
+      'Formik',
+      'Ant Design',
+      'ESlint 9',
+      'Husky',
+    ],
+    img: '/projects/df-boilerplate.png',
+    url: 'https://juniorlevel.github.io/df_boilerplate-main/styleguide/',
+    repositoryUrl: 'https://github.com/JuniorLevel/df_boilerplate-main',
   },
   {
     id: 6,
